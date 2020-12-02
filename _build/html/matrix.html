@@ -1,0 +1,573 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Matrix instant messaging &#8212; Het programmeerbare web</title>
+    
+  <link rel="stylesheet" href="_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Tools" href="tools.html" />
+    <link rel="prev" title="Trello: plannen met kaartjes" href="trello.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  <img src="_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Het programmeerbare web</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="inleiding.html">
+   Inleiding
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="http.html">
+   Het HTTP protocol
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python-http.html">
+   HTTP in Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="rest-apis.html">
+   REST API’s
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="trello.html">
+   Trello: plannen met kaartjes
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Matrix instant messaging
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="tools.html">
+   Tools
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/matrix.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/eelcodijkstra/webapibook"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/eelcodijkstra/webapibook/issues/new?title=Issue%20on%20page%20%2Fmatrix.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/eelcodijkstra/webapibook/master?urlpath=tree/docs/matrix.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#matrix-terminologie">
+   Matrix terminologie
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#matrix-api">
+   Matrix API
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#login-en-token">
+   Login en token
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#room-en-room-id">
+   Room en room_id
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sturen-van-een-bericht">
+   Sturen van een bericht
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ontvangen-van-berichten">
+   Ontvangen van berichten
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="matrix-instant-messaging">
+<h1>Matrix instant messaging<a class="headerlink" href="#matrix-instant-messaging" title="Permalink to this headline">¶</a></h1>
+<p>Matrix (https://matrix.org) is een <em>instant messaging</em> toepassing, te vergelijken met IRC, Slack, Telegram, WhatsApp en dergelijke.
+Matrix onderscheidt zich van de andere berichtendiensten door het open karakter.
+Niet alleen is de software open source, de toepassing is helemaal gericht op het onderling verknopen (federation) van berichtentdiensten. Je kunt met je eigen Matrix-server (Selenium) werken, als je dat wilt, en deze in het Matrix-netwerk op laten nemen.
+Via <em>bridges</em> koppel je Matrix aan andere berichtendiensten, zoals IRC, Slack en dergelijke.</p>
+<p>Daarnaast is de dienst goed beveiligd, met de mogelijkheid van end-to-end encryption.</p>
+<blockquote>
+<div><p>In Europa wordt Matrix op een aantal plaatsen door overheden ingezet als alternatief voor de commerciële aanbieders uit vooral de USA. Hiermee is het onder andere gemakkelijker om privacy en security af te dwingen zonder inmenging van buiten.</p>
+</div></blockquote>
+<p>Je kunt Matrix ook combineren met audio- of videoverbindingen.</p>
+<p>Voor Matrix zijn er verschillende <em>clients</em> beschikbaar. Hiervan is <em>Element</em> (https://element.io) wel de belangrijkste.</p>
+<div class="section" id="matrix-terminologie">
+<h2>Matrix terminologie<a class="headerlink" href="#matrix-terminologie" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><em>room</em>: de plek waar berichten over een bepaald onderwerp uitgewisseld worden; je kunt dit ook zien als een gesprek. Een room heeft een naam, bijvoorbeeld:  <code class="docutils literal notranslate"><span class="pre">+infvo-test:matrix.org</span></code>???</p></li>
+<li><p><em>community</em>: een groep waaraan <em>rooms</em> en <em>users</em> gekoppeld kunnen zijn?? Bijvoorbeeld: <code class="docutils literal notranslate"><span class="pre">+infvo:matrix.org</span></code></p></li>
+<li><p><em>user</em>: een gebruiker geef je aan het een <code class="docutils literal notranslate"><span class="pre">&#64;</span></code>, bijvoorbeeld <code class="docutils literal notranslate"><span class="pre">&#64;infvobot:matrix.org</span></code>.</p></li>
+</ul>
+<p>Ewn <em>room</em> heeft een verzameling gebruikers; sommige rooms zijn vrij toegankelijk, terwijl andere rooms alleen werken met uitgenodigde deelnemers (invited). Het deelnemen aan een room heet “join”.</p>
+<p>In de API’s worden in plaats van de normale namen vaak IDs gebruikt. Deze kun je achterhalen via de API, of via het user interface (web of Element).</p>
+</div>
+<div class="section" id="matrix-api">
+<h2>Matrix API<a class="headerlink" href="#matrix-api" title="Permalink to this headline">¶</a></h2>
+<p>De Matrix client-server API vind je op https://matrix.org/docs/api/client-server/.
+Bij de uitleg vind je daar ook de mogelijkheid om queries uit te proberen.</p>
+<p>Voor ons zijn de belangrijkste functies:</p>
+<ul class="simple">
+<li><p>https://matrix.org/docs/api/client-server/#!/Session32management/login: als resultaat van de login krijg je een <em>access token</em> dat je in de andere API-aanroepen gebruikt voor authenticatie.</p></li>
+<li></li>
+</ul>
+<p>Voordat je via de API de berichten in een</p>
+</div>
+<div class="section" id="login-en-token">
+<h2>Login en token<a class="headerlink" href="#login-en-token" title="Permalink to this headline">¶</a></h2>
+<p>Voor de authenticatie van de API-requests heb je een <em>access token</em> nodig.
+Dit kun je krijgen door een login-request, waarbij je username en password nodig hebt.</p>
+<blockquote>
+<div><p>Je kunt dit access token vergelijken met een cookie dat de HTTP-server bij de browser achterlaat,
+nadat een gebruiker ingelogd heeft. Dit cookie wordt dan met alle volgende requests vanuit de browser
+naar de server gestuurd. Dit fungeert dan als authenticatie van deze volgende requests.</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">urllib</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">matrix_username</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Matrix username: &quot;</span><span class="p">)</span>
+<span class="n">matrix_password</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Matrix password: &quot;</span><span class="p">)</span>
+<span class="n">msgnr</span> <span class="o">=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">request_data</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">&quot;identifier&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;m.id.user&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;infvobot&quot;</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;initial_device_display_name&quot;</span><span class="p">:</span> <span class="n">matrix_username</span><span class="p">,</span>
+  <span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="n">matrix_password</span><span class="p">,</span>
+  <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;m.login.password&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;https://matrix.org/_matrix/client/r0/login&#39;</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">request_data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Als de query succesvol is (code 200), dan vinden we het access_token in het resultaat.
+Dit access-token gebruiken we in de volgende API-aanroepen voor de authenticatie en autorisatie.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+    <span class="n">access_token</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s1">&#39;access_token&#39;</span><span class="p">]</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">status_code</span><span class="p">)</span>
+    <span class="n">access_token</span> <span class="o">=</span> <span class="s2">&quot;no-access-token&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="room-en-room-id">
+<h2>Room en room_id<a class="headerlink" href="#room-en-room-id" title="Permalink to this headline">¶</a></h2>
+<p>Voordat een gebruiker berichten kan plaatsen in een <em>room</em>, moet deze eerst toegang krijgen.
+Voor besloten <em>rooms</em> betekent dit dat de gebruiker uitgenodigd moet worden (<em>invite</em>),
+waarna de gebruiker deel kan nemen in de room (<em>join</em>).</p>
+<p>We gaan er hieronder vanuit dat de betreffende gebruiker toegang heeft tot de room.
+In Element vind je de room_id via de (…)room-options-&gt;instellingen-&gt;geavanceerd.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">room_id</span> <span class="o">=</span> <span class="s2">&quot;!ZxQixdOxFLFZDVEFam:matrix.org&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="sturen-van-een-bericht">
+<h2>Sturen van een bericht<a class="headerlink" href="#sturen-van-een-bericht" title="Permalink to this headline">¶</a></h2>
+<p>Als eerste stap versturen we een bericht naar de betreffende <em>room</em>.
+Berichten worden genummerd om ervoor te zorgen dat eenzelfde bericht maar één keer geplaatst wordt,
+ook als dit meermalen verstuurd wordt. (<em>idempotent</em> gedrag).
+Berichten met een lager nummer dan het laatst ontvangen nummer worden niet geplaatst.
+(Dit geeft bovendien bescherming tegen “replay attacks”?)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">msgnr</span> <span class="o">=</span> <span class="n">msgnr</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">msg</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">&quot;msgtype&quot;</span><span class="p">:</span> <span class="s2">&quot;m.text&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="s2">&quot;Hallo! Hier is &quot;</span> <span class="o">+</span> <span class="n">matrix_username</span>
+<span class="p">}</span>
+<span class="n">url1</span> <span class="o">=</span> <span class="s2">&quot;https://matrix.org/_matrix/client/r0/rooms/</span><span class="si">{roomid}</span><span class="s2">/send/m.room.message/</span><span class="si">{txnr}</span><span class="s2">?access_token=</span><span class="si">{token}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+          <span class="n">roomid</span> <span class="o">=</span> <span class="n">room_id</span><span class="p">,</span> <span class="n">txnr</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">msgnr</span><span class="p">),</span> <span class="n">token</span> <span class="o">=</span> <span class="n">access_token</span>
+       <span class="p">)</span>
+<span class="n">url1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">snd</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">url1</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">msg</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">snd</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+    <span class="n">event_id</span> <span class="o">=</span> <span class="n">snd</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">&quot;event_id&quot;</span><span class="p">]</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">event_id</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">snd</span><span class="o">.</span><span class="n">status_code</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="ontvangen-van-berichten">
+<h2>Ontvangen van berichten<a class="headerlink" href="#ontvangen-van-berichten" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url2</span> <span class="o">=</span> <span class="s2">&quot;https://matrix.org/_matrix/client/r0/rooms/</span><span class="si">{roomid}</span><span class="s2">/context/</span><span class="si">{eventid}</span><span class="s2">?access_token=</span><span class="si">{token}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+          <span class="n">roomid</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">quote</span><span class="p">(</span><span class="n">room_id</span><span class="p">),</span> 
+          <span class="n">eventid</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">quote</span><span class="p">(</span><span class="n">event_id</span><span class="p">),</span> 
+          <span class="n">token</span> <span class="o">=</span> <span class="n">access_token</span>
+       <span class="p">)</span>
+<span class="n">url2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r2</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r2</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Verwerken van deze context: filteren van relevante berichten. (NB: deze berichten staan in omgekeerde volgorde.)</p>
+<blockquote>
+<div><p>??Kunnen we de tijd hierbij vermelden?</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">context</span> <span class="o">=</span> <span class="n">r2</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">context</span><span class="p">[</span><span class="s2">&quot;events_before&quot;</span><span class="p">]:</span>
+    <span class="k">if</span> <span class="n">msg</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;m.room.message&quot;</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">msg</span><span class="p">[</span><span class="s2">&quot;sender&quot;</span><span class="p">],</span> <span class="s2">&quot;: &quot;</span><span class="p">,</span> <span class="n">msg</span><span class="p">[</span><span class="s2">&quot;content&quot;</span><span class="p">][</span><span class="s2">&quot;body&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Het eigenlijke protocol is om eerst “sync” te gebruiken: dit geeft de toestand voor alle verbonden rooms.
+De volgende berichten kun je dan per room opvragen via “messages”.
+Daarbij geef je steeds de eventid mee van het laatst ontvangen bericht (“prev batch”).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url3</span> <span class="o">=</span> <span class="s2">&quot;https://matrix.org/_matrix/client/r0/sync?access_token=</span><span class="si">{token}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+          <span class="n">token</span> <span class="o">=</span> <span class="n">access_token</span>
+       <span class="p">)</span>
+<span class="n">url3</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r3</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url3</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">r3</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">r3</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">r3</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="n">next_batch</span> <span class="o">=</span> <span class="n">r3</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">&quot;next_batch&quot;</span><span class="p">]</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">r3</span><span class="o">.</span><span class="n">status_code</span><span class="p">)</span>
+    
+</pre></div>
+</div>
+</div>
+</div>
+<p>NB: ik heb de <code class="docutils literal notranslate"><span class="pre">prev_batch</span></code> van de betreffende room nodig…</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">r3</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span><span class="p">[</span><span class="s2">&quot;rooms&quot;</span><span class="p">][</span><span class="s2">&quot;join&quot;</span><span class="p">][</span><span class="n">room_id</span><span class="p">][</span><span class="s2">&quot;timeline&quot;</span><span class="p">][</span><span class="s2">&quot;prev_batch&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">events</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;rooms&quot;</span><span class="p">][</span><span class="s2">&quot;join&quot;</span><span class="p">][</span><span class="n">room_id</span><span class="p">][</span><span class="s2">&quot;timeline&quot;</span><span class="p">][</span><span class="s2">&quot;events&quot;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">events</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">event</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;m.room.message&quot;</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">event</span><span class="p">[</span><span class="s2">&quot;sender&quot;</span><span class="p">],</span> <span class="s2">&quot;: &quot;</span><span class="p">,</span> <span class="n">event</span><span class="p">[</span><span class="s2">&quot;content&quot;</span><span class="p">][</span><span class="s2">&quot;body&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="trello.html" title="previous page">Trello: plannen met kaartjes</a>
+    <a class='right-next' id="next-link" href="tools.html" title="next page">Tools</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Eelco Dijkstra<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

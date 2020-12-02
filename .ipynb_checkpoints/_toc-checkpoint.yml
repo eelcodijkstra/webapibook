@@ -1,0 +1,14 @@
+# Table of content
+# Learn more at https://jupyterbook.org/customize/toc.html
+#
+- file: inleiding
+- file: http
+- file: python-http
+- file: rest-apis
+- file: trello
+- file: matrix
+- file: tools
+- file: content
+  sections:
+    - file: markdown
+    - file: notebooks

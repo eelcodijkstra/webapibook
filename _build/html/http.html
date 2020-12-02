@@ -1,0 +1,528 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Het HTTP protocol &#8212; Het programmeerbare web</title>
+    
+  <link rel="stylesheet" href="_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="HTTP in Python" href="python-http.html" />
+    <link rel="prev" title="Inleiding" href="inleiding.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  <img src="_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Het programmeerbare web</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="inleiding.html">
+   Inleiding
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Het HTTP protocol
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python-http.html">
+   HTTP in Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="rest-apis.html">
+   REST API’s
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="trello.html">
+   Trello: plannen met kaartjes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="matrix.html">
+   Matrix instant messaging
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="tools.html">
+   Tools
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/http.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/eelcodijkstra/webapibook"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/eelcodijkstra/webapibook/issues/new?title=Issue%20on%20page%20%2Fhttp.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/eelcodijkstra/webapibook/master?urlpath=tree/docs/http.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#inleiding">
+   Inleiding
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#client-server-interactie">
+   Client-server interactie
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#adressering-url">
+   Adressering: URL
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#http-request">
+   HTTP request
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#metadata-headers">
+     Metadata: headers
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#http-response-en-payload">
+   HTTP-response en payload
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#http-methods">
+   HTTP methods
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#http-in-de-protocolstack">
+   HTTP in de protocolstack
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#authenticatie-en-autorisatie">
+   Authenticatie en autorisatie
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#communicatie-tussen-webservers">
+   Communicatie tussen webservers
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="het-http-protocol">
+<h1>Het HTTP protocol<a class="headerlink" href="#het-http-protocol" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="inleiding">
+<h2>Inleiding<a class="headerlink" href="#inleiding" title="Permalink to this headline">¶</a></h2>
+<p>HTTP (HyperText Transfer Protocol) is het protocol van het web. Het web is een toepassing van het internet.
+In de internet protocol-stack is HTTP een <em>toepassingsprotocol</em>. HTTP maakt gebruik van TCP, voor betrouwbare bi-directionele verbindingen, eventueel aangevuld met TLS, voor versleutelde verbindingen.</p>
+<p>HTTP is een <em>client-server</em> protocol. De client stuurt een request naar de server, die een response terugstuurt.</p>
+<p>Voor de <em>adressering</em> gebruikt HTTP de URL: deze bevat, naast de naam van de server, het pad naar de betreffende <em>resource</em> (de “webpagina”).</p>
+<p>De <em>payload</em> in deze response is gewoonlijk een HTML-document; ook andere bestanden, zoals CSS, JavaScript en figuren (jpeg, png, enz.) kunnen als payload optreden.
+De <em>headers</em> die meegegeven worden bij de client-server communicatie bevat de <em>metadata</em> bij het protocol, zoals bijvoorbeeld <em>cookies</em>.</p>
+</div>
+<div class="section" id="client-server-interactie">
+<h2>Client-server interactie<a class="headerlink" href="#client-server-interactie" title="Permalink to this headline">¶</a></h2>
+<div class="figure align-center" id="id1">
+<a class="reference internal image-reference" href="_images/iot-client-server-0.png"><img alt="_images/iot-client-server-0.png" src="_images/iot-client-server-0.png" style="width: 600px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">HTTP client-server interactie</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+<p>Het web-protocol HTTP werkt op basis van client-server interacties:</p>
+<ul class="simple">
+<li><p>de browser, als client, stuurt een verzoek (request) naar de webserver,
+bijvoorbeeld een aanvraag voor een HTML-document.
+De URL in het request geeft aan welk document bedoeld wordt.</p></li>
+<li><p>de webserver stuurt een antwoord (response) terug naar de browser,
+met het gevraagde document.</p></li>
+</ul>
+<p>De client-server interactie kun je vergelijken met een loket, bijvoorbeeld van een bank,
+met een rij klanten die één voor één door de loketbeambte bediend worden.
+De server krijgt allerlei request van verschillende clients door elkaar aangeboden,
+en handelt deze onafhankelijk voor elkaar af.</p>
+<p>Zoals we later zullen zien kunnen ook andere programma’s als client van een webserver optreden:
+dat vormt de basis voor het programmeerbare web.</p>
+</div>
+<div class="section" id="adressering-url">
+<h2>Adressering: URL<a class="headerlink" href="#adressering-url" title="Permalink to this headline">¶</a></h2>
+<div class="figure align-center" id="id2">
+<a class="reference internal image-reference" href="_images/http-url.png"><img alt="_images/http-url.png" src="_images/http-url.png" style="width: 600px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">Webadres: Uniform Resource Locator</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</div>
+<p>Een webadres ofwel URL (Uniform Resource Locator) heeft de vorm: <code class="docutils literal notranslate"><span class="pre">http://&lt;host&gt;:&lt;poort&gt;&lt;pad&gt;</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">http:</span></code> of <code class="docutils literal notranslate"><span class="pre">https:</span></code> - schema (protocol): HTTP of HTTPS;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;host&gt;</span></code> - domeinnaam of IP-adres van de webserver, voor het IP-protocol;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;poort&gt;</span></code> -nummer - TCP-poort; default: 80 voor HTTP, 443 voor HTTPS;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;pad&gt;</span></code> - adres (bijv. bestandsnaam) van de <em>resource</em> binnen de server.</p></li>
+</ul>
+<p><strong>Voorbeeld:</strong> <code class="docutils literal notranslate"><span class="pre">https://infvopedia.nl/demo/iot-app.html</span></code></p>
+<p>Voor een server in het publieke internet gebruik je meestal een domeinnaam,
+zoals <code class="docutils literal notranslate"><span class="pre">infvopedia.nl</span></code>.
+De browser stuurt een verzoek naar de DNS-server om deze naam om te zetten in het bijbehorende IP-adres.
+(Nog een voorbeeld van een client-server interactie.)
+Het pad-gedeelte <code class="docutils literal notranslate"><span class="pre">/demo/iot-app.html</span></code> identificeert het HTML-document (bestand) op de server.</p>
+<p><strong>Voorbeeld:</strong> <code class="docutils literal notranslate"><span class="pre">http://192.168.1.123/leds/0</span></code></p>
+<p>Dit is een voorbeeld van een IoT-knoop als webserver in een lokaal netwerk.
+Een computer in een lokaal netwerk heeft meestal geen domeinnaam:
+je gebruikt dan het IP-adres, zoals <code class="docutils literal notranslate"><span class="pre">192.168.1.123</span></code>.
+Het pad-gedeelte <code class="docutils literal notranslate"><span class="pre">/leds/0</span></code> identificeert led 0 van de IoT-knoop.</p>
+<p><em>Opmerking</em> In een URL kun je nog meer onderdelen tegenkomen, voor de eenvoud zijn die hierboven weggelaten.
+Voor de details, zie de Wikipedia-pagina of de officiële beschrijving in RFC3986.</p>
+<p><em>Opmerking</em> De notatie voor URL’s wordt ook voor andere protocollen dan HTTP gebruikt,
+bijvoorbeeld: <code class="docutils literal notranslate"><span class="pre">file:</span></code> - voor bestanden; <code class="docutils literal notranslate"><span class="pre">ftp:</span></code> - voor het File Transfer Protocol (FTP); of <code class="docutils literal notranslate"><span class="pre">mailto:</span></code> - voor e-mail.</p>
+<p>Zie:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/URL">https://en.wikipedia.org/wiki/URL</a></p></li>
+<li><p><a class="reference external" href="https://tools.ietf.org/html/rfc3986">https://tools.ietf.org/html/rfc3986</a> (officiële beschrijving van URI en URL)</p></li>
+</ul>
+</div>
+<div class="section" id="http-request">
+<h2>HTTP request<a class="headerlink" href="#http-request" title="Permalink to this headline">¶</a></h2>
+<div class="figure align-center" id="id3">
+<a class="reference internal image-reference" href="_images/http-request-ex1.png"><img alt="_images/http-request-ex1.png" src="_images/http-request-ex1.png" style="width: 700px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">HTTP request voorbeeld</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</div>
+<p>Hierboven zie je een voorbeeld van een HTTP-request.
+Dit begint met <code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/hello</span> <span class="pre">HTTP/1.1</span></code>
+Hierin is <code class="docutils literal notranslate"><span class="pre">GET</span></code> de <strong>HTTP-method</strong>: deze bepaald het type van het request.
+De belangrijkste methods zijn</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">GET</span></code>, waarmee de client (browser) een webpagina van de server vraagt; en</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">POST</span></code>, waarmee de client de inhoud van een webformulier naar de server stuurt.</p></li>
+</ul>
+<p>In het gedeelte over REST-APIs behandelen we nog enkele andere HTTP-methods.</p>
+<p>Het URL-pad <code class="docutils literal notranslate"><span class="pre">/hello</span></code> geeft het pad van het webdocument op de server aan.
+In veel gevallen verwijst dit naar een bestand in een filesysteem.</p>
+<p>Tenslotte geeft <code class="docutils literal notranslate"><span class="pre">HTTP/1.1</span></code> de versie van het gebruikte protocol aan.</p>
+<div class="section" id="metadata-headers">
+<h3>Metadata: headers<a class="headerlink" href="#metadata-headers" title="Permalink to this headline">¶</a></h3>
+<p>Na de eerste regel volgen de <em>headers</em>:
+dat zijn de metadata van het protocol, in de vorm van (naam, waarde)-paren.
+Enkele veel-gebruikte headers zijn:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Host</span></code> - het domeinnaam:poortnr-deel uit de URL (bijv. <code class="docutils literal notranslate"><span class="pre">infvopedia.nl:1880</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Accept</span></code> - het type van de payload dat de client verwacht (bijv. <code class="docutils literal notranslate"><span class="pre">text/html</span></code>);</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">User-Agent</span></code> - de identificatie van de client (browser);</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Cookie</span></code> - een cookie dat eerder door de client van de server ontvangen is;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> - het type van de payload (bijvoorbeeld <code class="docutils literal notranslate"><span class="pre">text/html;</span> <span class="pre">charset=utf-8</span></code>)</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="http-response-en-payload">
+<h2>HTTP-response en payload<a class="headerlink" href="#http-response-en-payload" title="Permalink to this headline">¶</a></h2>
+<div class="figure align-center" id="id4">
+<a class="reference internal image-reference" href="_images/http-response-ex1.png"><img alt="_images/http-response-ex1.png" src="_images/http-response-ex1.png" style="width: 500px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">HTTP response bij het eerdere request-voorbeeld</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+</div>
+<p>De eerste regel van de response geeft de resultaatcode.</p>
+<p><code class="docutils literal notranslate"><span class="pre">200</span></code> betekent, zoals de rest van de regel zegt: OK.
+Een andere code die je tegenkomt is bijvoorbeeld <code class="docutils literal notranslate"><span class="pre">404</span></code>,
+voor een webpagina die niet gevonden kan worden.</p>
+<p>De regels daarna vormen de headers: de metadata van het protocol.
+De header <code class="docutils literal notranslate"><span class="pre">Content-Length</span></code> geeft de lengte van de payload.
+De header <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> geeft het payload-formaat aan.
+Dat is in dit geval <code class="docutils literal notranslate"><span class="pre">text/html</span></code>, voor een HTML-document;
+in veel APIs kom je ook JSON tegen: <code class="docutils literal notranslate"><span class="pre">application/json</span></code>.</p>
+<p>De tekst daarna is de payload, in HTML-formaat.
+Dit formaat is vooral bedoeld voor webpagina’s die je in een browser weergeeft.
+Voor APIs is het JSON-formaat handiger:
+een programma kan JSON eenvoudig in een object omzetten, en omgekeerd.</p>
+</div>
+<div class="section" id="http-methods">
+<h2>HTTP methods<a class="headerlink" href="#http-methods" title="Permalink to this headline">¶</a></h2>
+<p>P.M.</p>
+<ul class="simple">
+<li><p>GET, POST, PUT, DELETE, HEAD, PATCH, enz.</p></li>
+</ul>
+</div>
+<div class="section" id="http-in-de-protocolstack">
+<h2>HTTP in de protocolstack<a class="headerlink" href="#http-in-de-protocolstack" title="Permalink to this headline">¶</a></h2>
+<div class="figure align-center" id="id5">
+<a class="reference internal image-reference" href="_images/http-ip-stack.png"><img alt="_images/http-ip-stack.png" src="_images/http-ip-stack.png" style="width: 700px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 5 </span><span class="caption-text">Webserver protocolstack</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+</div>
+<p>De protocolstack voor de webserver-keten bevat de volgende elementen, vanaf de toepassing gezien:</p>
+<ul class="simple">
+<li><p>web-app</p></li>
+<li><p>web: hypertext transfer protocol (HTTP): HTML-documenten enz.</p></li>
+<li><p>internet: transmission control protocol (TCP): betrouwbare bi-direectionele bytestromen</p></li>
+<li><p>internet-protocol (IP): best-effort pakketcommunicatie;
+universeel datatransport, onafhankelijk van hardware en toepassingen</p></li>
+<li><p>fysieke (hardware) verbinding: WiFi of Ethernet</p></li>
+</ul>
+<p>De basisprotocollen van het internet, TCP en IP, vormen een logische laag die de toepassingen scheidt van de hardware
+(zie <em>3-lagen model</em>).</p>
+<p>Het HTTP-protocol vind je alleen in de eindapparaten, niet in het netwerk zelf.
+Dit is een voorbeeld van het <em>end-to-end principe</em> van het internet.
+Dit betekent bijvoorbeeld dat wanneer er een nieuwe versie is van het HTTP-protocol,
+er geen aanpassingen in het netwerk zelf nodig zijn.</p>
+<p>Bovendien kan het verkeer tussen de client en de server “end-to-end” versleuteld worden:
+alleen in de client en in de server is de data niet-versleuteld toegankelijk.
+Voor deze versleuteling (in het geval van HTTPS) heb je een apart protocol nodig: TLS,
+tussen TCP en HTTPS.</p>
+</div>
+<div class="section" id="authenticatie-en-autorisatie">
+<h2>Authenticatie en autorisatie<a class="headerlink" href="#authenticatie-en-autorisatie" title="Permalink to this headline">¶</a></h2>
+<p>P.M.</p>
+<ul class="simple">
+<li><p>username/password</p></li>
+<li><p>cookies</p></li>
+<li><p>API-token</p></li>
+</ul>
+</div>
+<div class="section" id="communicatie-tussen-webservers">
+<h2>Communicatie tussen webservers<a class="headerlink" href="#communicatie-tussen-webservers" title="Permalink to this headline">¶</a></h2>
+<div class="figure align-center" id="id6">
+<a class="reference internal image-reference" href="_images/iot-web-api-1.png"><img alt="_images/iot-web-api-1.png" src="_images/iot-web-api-1.png" style="width: 400px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 6 </span><span class="caption-text">Computer (toepassing) als client van een webserver</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
+</div>
+<p>Toepassing als client van een webserver.</p>
+<div class="figure align-center" id="id7">
+<a class="reference internal image-reference" href="_images/iot-web-api-2.png"><img alt="_images/iot-web-api-2.png" src="_images/iot-web-api-2.png" style="width: 500px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 7 </span><span class="caption-text">Een web van clients en servers, sterk verweven</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
+</div>
+<p>Een webserver kan ook weer als client van een andere webserver optreden, en omgekeerd.
+Deze onderlinge communicatie tussen webservers vormt de basis voor het programmeerbare web.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="inleiding.html" title="previous page">Inleiding</a>
+    <a class='right-next' id="next-link" href="python-http.html" title="next page">HTTP in Python</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Eelco Dijkstra<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>
