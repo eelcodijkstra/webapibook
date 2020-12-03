@@ -21,3 +21,14 @@ Deze presentaties maken gebruik van Rise, voor reveal.js in Jupyter notebook: zi
 Je kunt vanuit een Jupyter Notebook in de browser, via Binder, naar de andere notebooks in hetzelfde repository navigeren door te klikken op het Jupyter logo linksboven. Je krijgt dan de vraag of je de pagina wilt verlaten; antwoord "ja".
 In het venster krijg je dan de verschillende bestanden in het repository te zien. Je kunt een notebook actief maken door dit aan te klikken.
 
+
+
+
+```{toctree}
+:hidden:
+:titlesonly:
+
+
+presentaties/http-in-python.ipynb
+presentaties/http-rest.ipynb
+```

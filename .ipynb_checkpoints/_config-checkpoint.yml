@@ -31,4 +31,4 @@ html:
 launch_buttons:
   binderhub_url             : https://mybinder.org
   
-exclude_patterns: [presentaties/*]  
+# exclude_patterns: [presentaties/*]  

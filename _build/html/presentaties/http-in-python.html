@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Web voor mensen &#8212; Het programmeerbare web</title>
+    <title>Inleiding web-API’s in Python &#8212; Het programmeerbare web</title>
     
   <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -55,6 +55,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="REST API’s" href="http-rest.html" />
+    <link rel="prev" title="Presentaties" href="../presentaties.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -94,7 +96,7 @@
   </a>
  </li>
 </ul>
-<ul class="nav sidenav_l1">
+<ul class="current nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="../http.html">
    Het HTTP protocol
@@ -112,7 +114,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../trello.html">
-   Trello: plannen met kaartjes
+   Voorbeeld: Trello
   </a>
  </li>
  <li class="toctree-l1">
@@ -124,6 +126,23 @@
   <a class="reference internal" href="../tools.html">
    Tools
   </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="../presentaties.html">
+   Presentaties
+  </a>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Inleiding web-API’s in Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="http-rest.html">
+     REST API’s
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -230,72 +249,72 @@
         </div>
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#web-voor-mensen">
    Web voor mensen
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#web-voor-toepassingen">
    Web voor toepassingen
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#python-requests">
    Python requests
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#voorbeeld">
    Voorbeeld
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#headers-metadata">
    Headers: metadata
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#andere-request-mogelijkheden">
    Andere request-mogelijkheden
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#json-javascript-object-notation">
    JSON: JavaScript Object Notation
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#voorbeeld-todo-s">
    Voorbeeld: todo’s
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#get-read-1">
    GET: read(1)
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#put-update">
    PUT: update
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#post-create">
    POST: create
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#get-read-2">
    GET: read(2)
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#delete">
    DELETE
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#authenticatie-en-autorisatie">
    Authenticatie en autorisatie
   </a>
@@ -311,8 +330,10 @@
         
               <div>
                 
-  <div class="section" id="web-voor-mensen">
-<h1>Web voor mensen<a class="headerlink" href="#web-voor-mensen" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="inleiding-web-api-s-in-python">
+<h1>Inleiding web-API’s in Python<a class="headerlink" href="#inleiding-web-api-s-in-python" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="web-voor-mensen">
+<h2>Web voor mensen<a class="headerlink" href="#web-voor-mensen" title="Permalink to this headline">¶</a></h2>
 <img src="../images/iot-client-server-0.png" alt="client-server"  width="600px" >
 <ul class="simple">
 <li><p>web voor mensen: browser als client</p></li>
@@ -320,7 +341,7 @@
 </ul>
 </div>
 <div class="section" id="web-voor-toepassingen">
-<h1>Web voor toepassingen<a class="headerlink" href="#web-voor-toepassingen" title="Permalink to this headline">¶</a></h1>
+<h2>Web voor toepassingen<a class="headerlink" href="#web-voor-toepassingen" title="Permalink to this headline">¶</a></h2>
 <img src="../images/iot-web-api-1.png" alt="web-api-server"  width="600px">
 <ul class="simple">
 <li><p>web voor computers/toepassingen: toepassing als client</p></li>
@@ -329,7 +350,7 @@
 </ul>
 </div>
 <div class="section" id="python-requests">
-<h1>Python requests<a class="headerlink" href="#python-requests" title="Permalink to this headline">¶</a></h1>
+<h2>Python requests<a class="headerlink" href="#python-requests" title="Permalink to this headline">¶</a></h2>
 <p>Python <code class="docutils literal notranslate"><span class="pre">requests</span></code> library:</p>
 <p>vanuit Python-programma HTTP-requests versturen</p>
 <p>en verwerken van het resultaat</p>
@@ -343,7 +364,7 @@
 </div>
 </div>
 <div class="section" id="voorbeeld">
-<h1>Voorbeeld<a class="headerlink" href="#voorbeeld" title="Permalink to this headline">¶</a></h1>
+<h2>Voorbeeld<a class="headerlink" href="#voorbeeld" title="Permalink to this headline">¶</a></h2>
 <p>Voorbeeld: i&amp;i website</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -368,7 +389,7 @@
 </div>
 </div>
 <div class="section" id="headers-metadata">
-<h1>Headers: metadata<a class="headerlink" href="#headers-metadata" title="Permalink to this headline">¶</a></h1>
+<h2>Headers: metadata<a class="headerlink" href="#headers-metadata" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>* `Content-type`: type van de payload
 </pre></div>
 </div>
@@ -389,7 +410,7 @@
 </div>
 </div>
 <div class="section" id="andere-request-mogelijkheden">
-<h1>Andere request-mogelijkheden<a class="headerlink" href="#andere-request-mogelijkheden" title="Permalink to this headline">¶</a></h1>
+<h2>Andere request-mogelijkheden<a class="headerlink" href="#andere-request-mogelijkheden" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>methods: GET, POST, PUT, DELETE, enz.</p></li>
 <li><p>JSON als payload</p></li>
@@ -398,7 +419,7 @@
 </ul>
 </div>
 <div class="section" id="json-javascript-object-notation">
-<h1>JSON: JavaScript Object Notation<a class="headerlink" href="#json-javascript-object-notation" title="Permalink to this headline">¶</a></h1>
+<h2>JSON: JavaScript Object Notation<a class="headerlink" href="#json-javascript-object-notation" title="Permalink to this headline">¶</a></h2>
 <p>text-vorm van object, voor communicatie, opslag, enz.</p>
 <p>Python object (dict) &lt;-&gt; string (JSON)</p>
 <div class="cell docutils container">
@@ -437,7 +458,7 @@
 </div>
 </div>
 <div class="section" id="voorbeeld-todo-s">
-<h1>Voorbeeld: todo’s<a class="headerlink" href="#voorbeeld-todo-s" title="Permalink to this headline">¶</a></h1>
+<h2>Voorbeeld: todo’s<a class="headerlink" href="#voorbeeld-todo-s" title="Permalink to this headline">¶</a></h2>
 <p>Simpele todo-app op glitch.com</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -471,7 +492,7 @@
 </div>
 </div>
 <div class="section" id="get-read-1">
-<h1>GET: read(1)<a class="headerlink" href="#get-read-1" title="Permalink to this headline">¶</a></h1>
+<h2>GET: read(1)<a class="headerlink" href="#get-read-1" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r2</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">todo_app</span> <span class="o">+</span> <span class="s2">&quot;/todos/2&quot;</span><span class="p">)</span>
@@ -490,7 +511,7 @@
 </div>
 </div>
 <div class="section" id="put-update">
-<h1>PUT: update<a class="headerlink" href="#put-update" title="Permalink to this headline">¶</a></h1>
+<h2>PUT: update<a class="headerlink" href="#put-update" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mytodo</span><span class="p">[</span><span class="s1">&#39;done&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
@@ -509,7 +530,7 @@
 </div>
 </div>
 <div class="section" id="post-create">
-<h1>POST: create<a class="headerlink" href="#post-create" title="Permalink to this headline">¶</a></h1>
+<h2>POST: create<a class="headerlink" href="#post-create" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>POST op collection levert id van nieuwe todo</p></li>
 </ul>
@@ -538,7 +559,7 @@
 </div>
 </div>
 <div class="section" id="get-read-2">
-<h1>GET: read(2)<a class="headerlink" href="#get-read-2" title="Permalink to this headline">¶</a></h1>
+<h2>GET: read(2)<a class="headerlink" href="#get-read-2" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r5</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">todo_app</span> <span class="o">+</span> <span class="s2">&quot;/todos/</span><span class="si">{id}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
@@ -558,7 +579,7 @@
 </div>
 </div>
 <div class="section" id="delete">
-<h1>DELETE<a class="headerlink" href="#delete" title="Permalink to this headline">¶</a></h1>
+<h2>DELETE<a class="headerlink" href="#delete" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r5</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">todo_app</span> <span class="o">+</span> <span class="s2">&quot;/todos/</span><span class="si">{id}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
@@ -578,7 +599,7 @@
 </div>
 </div>
 <div class="section" id="authenticatie-en-autorisatie">
-<h1>Authenticatie en autorisatie<a class="headerlink" href="#authenticatie-en-autorisatie" title="Permalink to this headline">¶</a></h1>
+<h2>Authenticatie en autorisatie<a class="headerlink" href="#authenticatie-en-autorisatie" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">openweathermap_key</span> <span class="o">=</span> <span class="s1">&#39;vulhierjekeyin&#39;</span>
@@ -598,6 +619,7 @@
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rw</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 </pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -631,6 +653,8 @@
     
     <div class='prev-next-bottom'>
         
+    <a class='left-prev' id="prev-link" href="../presentaties.html" title="previous page">Presentaties</a>
+    <a class='right-next' id="next-link" href="http-rest.html" title="next page">REST API’s</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

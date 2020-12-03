@@ -9,4 +9,7 @@
 - file: matrix
 - file: tools
 - file: presentaties
+  sections:
+  - file: presentaties/http-in-python.ipynb
+  - file: presentaties/http-rest.ipynb
 
