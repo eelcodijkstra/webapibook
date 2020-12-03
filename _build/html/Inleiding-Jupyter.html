@@ -1,0 +1,645 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inleiding Jupyter Notebooks &#8212; Het programmeerbare web</title>
+    
+  <link rel="stylesheet" href="_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="REST API’s" href="presentaties/http-rest.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  <img src="_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Het programmeerbare web</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="inleiding.html">
+   Inleiding
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="http.html">
+   Het HTTP protocol
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python-http.html">
+   HTTP in Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="rest-apis.html">
+   REST API’s
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="trello.html">
+   Voorbeeld: Trello
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="matrix.html">
+   Matrix instant messaging
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="tools.html">
+   Tools
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="presentaties.html">
+   Presentaties
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Inleiding Jupyter Notebooks
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/Inleiding-Jupyter.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/eelcodijkstra/webapibook"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/eelcodijkstra/webapibook/issues/new?title=Issue%20on%20page%20%2FInleiding-Jupyter.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/eelcodijkstra/webapibook/master?urlpath=tree/Inleiding-Jupyter.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#code-cellen">
+   Code-cellen
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#code-samengestelde-opdrachten">
+   Code: samengestelde opdrachten
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#opdrachten">
+   Opdrachten
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#code-werkt-over-meerdere-cellen">
+   Code werkt over meerdere cellen
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#code-shell-opdrachten-in-python">
+   Code: shell-opdrachten in Python
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#kernel">
+   Kernel
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#herstarten-van-de-kernel">
+     Herstarten van de Kernel
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#learn-python-the-hard-way">
+   Learn Python - the hard way
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#volgorde">
+   Volgorde
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tussenvoegen-en-verwijderen-van-cellen">
+   Tussenvoegen en verwijderen van cellen
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#samenvatting">
+   Samenvatting
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#shortcuts">
+   Shortcuts
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="inleiding-jupyter-notebooks">
+<h1>Inleiding Jupyter Notebooks<a class="headerlink" href="#inleiding-jupyter-notebooks" title="Permalink to this headline">¶</a></h1>
+<p>Voor het oefenen met web-API’s in Python gebruiken we <a class="reference external" href="https://jupyter.org">Jupyter Notebooks</a>.
+Hiermee kun je op een interactieve manier aan de slag, waarbij je alle vrijheden hebt om je eigen varianten uit te proberen.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Opstarten als interactief notebook</p>
+<p>Start het interactieve notebook met de Launch Binder knop, onder de “raket” hierboven.
+Binder start dan een server voor het interactieve notebook in een apart browser-tabblad.</p>
+</div>
+<p>Een notebook bestaan uit cellen.</p>
+<p>Je selecteert een cel door op de cel te klikken, of in de kantlijn links van de cel.
+Je selecteert de volgende/vorige cel met de pijltjestoetsen up/down.
+<strong>Selecteer nu deze cel.</strong></p>
+<p>Er zijn twee soorten cellen: <strong>Code</strong> en <strong>Markdown</strong>.
+Het type van de geselecteerde cel vind je in de interface-balk bovenin.
+Met dit menu kun je ook het type van de cel veranderen
+Deze cel is een <strong>Markdown</strong> cel, de volgende cel is een (Python) <strong>Code</strong> cel. <strong>Controleer dit.</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">*</span> <span class="mi">4</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>14
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="code-cellen">
+<h2>Code-cellen<a class="headerlink" href="#code-cellen" title="Permalink to this headline">¶</a></h2>
+<p><strong>Uitvoeren van een cel</strong>. De cel hierboven is een Code-cel, met daarin een Python opdracht. <strong>Voer deze cel uit (Run)</strong>:</p>
+<ol class="simple">
+<li><p>Selecteer de cel</p></li>
+<li><p>Voer de cel uit, via Run (pijltje) in het menu hierboven, of via SHIFT-RETURN.</p></li>
+</ol>
+<p>Zoals je ziet verschijnt het resultaat van de Python-opdracht onder de cel.</p>
+<blockquote>
+<div><p>Bij het uitvoeren van een Code-cel verschijnt er in de kantlijn een getal tussen rechte haken. Dit geeft de volgorde van de uitgevoerde cellen aan. Als je de cel nogmaals uitvoert, zie je een volgend getal.</p>
+</div></blockquote>
+<p><strong>Aanpassen van een cel.</strong> Je kunt de code in een Code-cel eenvoudig aanpassen: selecteer de cel, en verander de tekst.</p>
+<p><strong>Verander de Python-code in de cel hieronder in:</strong> <code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">+</span> <span class="pre">3</span> <span class="pre">*</span> <span class="pre">5</span></code> en <strong>voer de cel uit</strong>.</p>
+<p>2 + 3</p>
+</div>
+<div class="section" id="code-samengestelde-opdrachten">
+<h2>Code: samengestelde opdrachten<a class="headerlink" href="#code-samengestelde-opdrachten" title="Permalink to this headline">¶</a></h2>
+<p>Je kunt in een cel willekeurige stukken Python-code opnemen, inclusief import-opdrachten, functie-definities, enz.
+De definities en declaraties kun je in de volgende cellen weer gebruiken:
+op die manier kun je een groter programma stap voor stap opbouwen.</p>
+<p>Als je een cel uitvoert, wordt de laatste expressie van die cel daaronder als resultaat getoond.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">succ</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">+</span><span class="mi">1</span>
+
+<span class="n">succ</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Opeenvolgende cellen.</strong> Je kunt alle Code-cellen in een Notebook beschouwen als één groot Python-programma, dat je stukje bij beetje (cel voor cel) kunt uitvoeren.
+Bij het uitvoeren van een cel wordt de waarde van de laatste expressie in de cel afgedrukt:
+dit gebruik je meestal om tussenresultaten te kunnen controleren.</p>
+<p><strong>Voer de onderstaande 2 cellen achtereenvolgens uit</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">13</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="mi">2</span>
+<span class="n">b</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>26
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="mi">14</span>
+<span class="mi">2</span> <span class="o">*</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span> <span class="o">+</span> <span class="n">c</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>66
+</pre></div>
+</div>
+</div>
+</div>
+<p>Een Code-cel bevat een stukje Python-programma. Dat kan ook een functie-defintie zijn.
+Deze functie kan dan in dezelfde of in een volgende cel gebruikt worden.</p>
+<p><strong>Voer de onderstaande 2 code-cellen achtereenvolgens uit</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sqr</span> <span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span>
+
+<span class="n">sqr</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>144
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num</span> <span class="o">=</span> <span class="mi">12</span>
+<span class="n">sqr</span><span class="p">(</span><span class="n">num</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>169
+</pre></div>
+</div>
+</div>
+</div>
+<p>Je kunt de tekst in een Markdown-cel aanpassen door deze in <strong>edit-mode</strong> te brengen.
+Dit doe je door een dubbel-klik op de cel.
+Je herkent deze mode aan het gebruik van een ander lettertype.</p>
+<p><strong>Pas de inhoud van deze cel aan</strong></p>
+<p>Een Markdown-cell breng je van edit-mode naar de geformatteerde tekst-mode door deze cel uit te voeren.
+Je <em>voert een cel uit</em> (<em>Run</em>) door op het pijl-symbool bovenin te klikken, of door SHIFT-RETURN.</p>
+<p><strong>Voer de cel hierboven uit om deze weer in geformatteerde tekst-mode te brengen.</strong></p>
+<ul class="simple">
+<li><p>Het uitvoeren van een Markdown-cel resulteert in het formatteren van de tekst.</p></li>
+<li><p>Het uitvoeren van een Code-cel resulteert in het uitvoeren van de code.</p></li>
+</ul>
+</div>
+<div class="section" id="opdrachten">
+<h2>Opdrachten<a class="headerlink" href="#opdrachten" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>pas de tekst in deze cel aan (edit-mode) en voer deze cel uit.</p></li>
+<li><p>pas de tekst van de cel hieronder aan en voer die cel uit.</p></li>
+<li><p>verander het type van de cel hieronder en voer die cel uit.
+Let op het verschil tussen (2) en (3).</p></li>
+</ol>
+<p>2 + 3 * 4</p>
+</div>
+<div class="section" id="code-werkt-over-meerdere-cellen">
+<h2>Code werkt over meerdere cellen<a class="headerlink" href="#code-werkt-over-meerdere-cellen" title="Permalink to this headline">¶</a></h2>
+<p>Code die je uitvoert kan een zij-effect: bijvoorbeeld het definiëren van een functie of een variabele.
+Het resultaat van dit zij-effect blijft bewaard en kun je gebruiken bij de uitvoering van een volgende cel.
+We gebruiken dit later om een groter programma in kleinere delen te presenteren.</p>
+<p>De onderstaande expressie gebruikt de functie die je hierboven gedefinieerd hebt:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">succ</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">x</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>En de cel hieronder gebruikt de variabele die je hiervoor gedefinieerd hebt:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">succ</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="code-shell-opdrachten-in-python">
+<h2>Code: shell-opdrachten in Python<a class="headerlink" href="#code-shell-opdrachten-in-python" title="Permalink to this headline">¶</a></h2>
+<p>In Python-code (in Jupyter Notebooks) kun je ook shell-opdrachten uitvoeren.
+Deze worden dan uitgevoerd in het onderliggende operating system.
+Het resultaat van zo’n opdracht kun je weer in Python verwerken.</p>
+<p>Een shell-opdracht geef je aan met een <code class="docutils literal notranslate"><span class="pre">!</span></code>, bijvoorbeeld <code class="docutils literal notranslate"><span class="pre">!ls</span></code>
+(voor het opvragen van de namen van de bestanden in de huidige map).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>ls
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">files</span> <span class="o">=</span> <span class="o">!</span>ls
+<span class="n">files</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">files</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="kernel">
+<h2>Kernel<a class="headerlink" href="#kernel" title="Permalink to this headline">¶</a></h2>
+<p>De code-cellen worden uitgevoerd door een <em>Kernel</em>-proces op de server.
+In ons geval is dat een Python-Kernel.
+Er zijn ook kernels voor andere programmeertalen beschikbaar.</p>
+<p>De toestand van de kernel wordt bepaald door de cellen die je uitvoert,
+in de volgorde zoals je die uitvoert.
+Dit is niet altijd de volgorde waarin ze in het Notebook staan.</p>
+<div class="section" id="herstarten-van-de-kernel">
+<h3>Herstarten van de Kernel<a class="headerlink" href="#herstarten-van-de-kernel" title="Permalink to this headline">¶</a></h3>
+<p>Als je allerlei experimenten uitgevoerd hebt, wil je soms weer “met een schone lei beginnen”.
+Hiervoor kun je de Kernel herstarten via het menu bovenin.
+In het bijzonder is het handig om daarbij de uitvoer van alle cellen ook te verwijderen:
+dan is duidelijk wat er tot nu toe uitgevoerd is, en wat niet.</p>
+</div>
+</div>
+<div class="section" id="learn-python-the-hard-way">
+<h2>Learn Python - the hard way<a class="headerlink" href="#learn-python-the-hard-way" title="Permalink to this headline">¶</a></h2>
+<p>De cursus <a class="reference external" href="https://learnpythonthehardway.org">Learn Python - the hard way</a> bevat allerlei opdrachten die letterlijk overgetypt moeten worden.
+De auteur legt er de nadruk op dat je die voorbeelden zelf moet intikken: van copy-paste leer je veel minder.
+Het intikken vraagt meer aandacht, en je maakt mogelijk leerzame fouten.</p>
+<p>In het materiaal gebruiken we zo nu en dan stukjes Python om over te tikken.
+Je zou gebruik kunnen maken van Copy-Paste, maar dan leer je er veel minder van.</p>
+<p>Tik de onderstaande code over in de volgende cel, en voer dan de cel uit</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">pred</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+  <span class="k">return</span> <span class="n">x</span><span class="o">-</span><span class="mi">1</span>
+  
+<span class="n">pred</span><span class="p">(</span><span class="n">succ</span><span class="p">(</span><span class="n">succ</span><span class="p">(</span><span class="mi">3</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="volgorde">
+<h2>Volgorde<a class="headerlink" href="#volgorde" title="Permalink to this headline">¶</a></h2>
+<p>Bij de opzet van de Notebooks proberen we de volgende regels te gebruiken.
+Deze verminderen de kans op fouten en verwarring.</p>
+<ol class="simple">
+<li><p>De volgorde van de cellen in het notebook is de natuurlijke volgorde: in principe voer je deze van voor naar achter uit.</p></li>
+<li><p>De code in een cel is zoveel mogelijk <em>idempotent</em>: het maakt niet uit of je deze één keer of vaker uitvoert.</p></li>
+</ol>
+<p>Regel (1) betekent dat als je een cel in het midden van een reeks cellen opnieuw uitvoert,
+dat je dan in principe de cellen daarna ook opnieuw moet uitvoeren.</p>
+<p>Regel (2) betekent dat je opdrachten van de vorm <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">x</span> <span class="pre">+</span> <span class="pre">1</span></code> moet vermijden. Voer in zo’n geval een nieuwe variabele in: <code class="docutils literal notranslate"><span class="pre">x1</span> <span class="pre">=</span> <span class="pre">x</span> <span class="pre">+</span> <span class="pre">1</span></code> o.i.d.</p>
+</div>
+<div class="section" id="tussenvoegen-en-verwijderen-van-cellen">
+<h2>Tussenvoegen en verwijderen van cellen<a class="headerlink" href="#tussenvoegen-en-verwijderen-van-cellen" title="Permalink to this headline">¶</a></h2>
+<p>Je kunt een cel toevoegen na de huidge cel met het <code class="docutils literal notranslate"><span class="pre">+</span></code>-symbool in het interface bovenin.</p>
+<p>De huidige cel verwijder je met het schaar-symbool in het interface bovenin.
+(Met Z -undo cell operation- maak je dat weer ongedaan.)</p>
+<p>Je kunt een cel verplaatsen met behulp van het handvat in de linker kantlijn.
+(Dit werkt alleen voor de nieuwere JupyterLab, niet voor Jupyter Notebook.)</p>
+</div>
+<div class="section" id="samenvatting">
+<h2>Samenvatting<a class="headerlink" href="#samenvatting" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>een notebook bestaat uit cellen; een cel kan <em>tekst</em> bevatten (Markdown), zoals deze cel, of (Python) <em>code</em>, zoals de cellen hieronder.</p></li>
+<li><p>je voert een cel uit door deze te selecteren (cursor in de cel), en vervolgens SHIFT-RETURN in te toetsen.
+Ook het pijltje in de opdrachtenbalk hierboven kun je gebruiken.</p></li>
+<li><p>onder de cel zie je dan de uitvoer van deze opdracht.</p></li>
+<li><p>alle variabelen enz. die je introduceert in de code van een cel kun je in de volgende cellen gebruiken.</p></li>
+<li><p>met een <code class="docutils literal notranslate"><span class="pre">!</span></code> kun je een shell-opdracht uitvoeren; het resultaat kun je in Python gebruiken (als string).</p></li>
+<li><p>om problemen te voorkomen voer je cellen alleen uit <em>in de volgorde in het notebook</em>.</p></li>
+<li><p>je kunt eventueel opnieuw beginnen door de “Kernel” opnieuw te starten (via het cirkeltje, als bij een reload in de browser).</p></li>
+<li><p>zie voor meer informatie: help, en <a class="reference external" href="https://www.dataquest.io/blog/jupyter-notebook-tutorial/">tutorial</a></p></li>
+</ul>
+<p>De meeste code-cellen kun je zo uitvoeren; probeer de code en de uitvoer te begrijpen.
+Bij sommige opdrachten moet je de code aanpassen, en dan de cel uitvoeren.</p>
+</div>
+<div class="section" id="shortcuts">
+<h2>Shortcuts<a class="headerlink" href="#shortcuts" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="presentaties/http-rest.html" title="previous page">REST API’s</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Eelco Dijkstra<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>
