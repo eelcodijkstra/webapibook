@@ -3,7 +3,8 @@
 Voor het oefenen met web-API's in Python gebruiken we [Jupyter Notebooks](https://jupyter.org).
 Hiermee kun je op een interactieve manier aan de slag, waarbij je alle vrijheden hebt om je eigen varianten uit te proberen.
 
-```{Tip} Opstarten als interactief notebook
+```{Admonition} Tip: opstarten als interactief notebook
+:class: tip
 
 Start het interactieve notebook met de Launch Binder knop, onder de "raket" hierboven.
 Binder start dan een server voor het interactieve notebook.
@@ -31,7 +32,7 @@ Deze cel is een **Markdown** cel, de volgende cel is een (Python) **Code** cel. 
 
 Zoals je ziet verschijnt het resultaat van de Python-opdracht onder de cel.
 
-> Bij het uitvoeren van een Code-cel verschijnt er in de kantlijn een getal tussen rechte haken. Dit geeft de volgorde van de uitgevoerde cellen aan. Als je de cel nogmaals uitvoert, zie je een volgend getal.
+> Bij het uitvoeren van een Code-cel verschijnt er in de kantlijn een getal tussen rechte haken, bijvoorbeeld `[2]`. Dit geeft de volgorde van de uitgevoerde cellen aan. Als je de cel nogmaals uitvoert, zie je een volgend getal. Als er een `[*]` staat rekent de server nog aan de cel. Als dat erg lang duurt, kun je het notebook soms beter opnieuw laden in de browser of opnieuw opstarten.
 
 **Aanpassen van een cel.** Je kunt de code in een Code-cel eenvoudig aanpassen: selecteer de cel, en verander de tekst.
 
@@ -94,9 +95,9 @@ Je *voert een cel uit* (*Run*) door op het pijl-symbool bovenin te klikken, of d
 
 ## Opdrachten
 
-1. pas de tekst in deze cel aan (edit-mode) en voer deze cel uit.
+1. pas de tekst in deze (Markdown) cel aan (in edit-mode) en voer deze cel uit.
 2. pas de tekst van de cel hieronder aan en voer die cel uit.
-3. verander het type van de cel hieronder en voer die cel uit.
+3. verander het type van de cel hieronder van Code in Markdown en voer die cel uit.
    Let op het verschil tussen (2) en (3).
 
 2 + 3 * 4

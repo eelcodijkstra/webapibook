@@ -318,9 +318,8 @@
 <h1>Inleiding Jupyter Notebooks<a class="headerlink" href="#inleiding-jupyter-notebooks" title="Permalink to this headline">¶</a></h1>
 <p>Voor het oefenen met web-API’s in Python gebruiken we <a class="reference external" href="https://jupyter.org">Jupyter Notebooks</a>.
 Hiermee kun je op een interactieve manier aan de slag, waarbij je alle vrijheden hebt om je eigen varianten uit te proberen.</p>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>Opstarten als interactief notebook</p>
+<div class="tip admonition">
+<p class="admonition-title">Tip: opstarten als interactief notebook</p>
 <p>Start het interactieve notebook met de Launch Binder knop, onder de “raket” hierboven.
 Binder start dan een server voor het interactieve notebook.</p>
 </div>
@@ -353,11 +352,17 @@ Deze cel is een <strong>Markdown</strong> cel, de volgende cel is een (Python) <
 </ol>
 <p>Zoals je ziet verschijnt het resultaat van de Python-opdracht onder de cel.</p>
 <blockquote>
-<div><p>Bij het uitvoeren van een Code-cel verschijnt er in de kantlijn een getal tussen rechte haken. Dit geeft de volgorde van de uitgevoerde cellen aan. Als je de cel nogmaals uitvoert, zie je een volgend getal.</p>
+<div><p>Bij het uitvoeren van een Code-cel verschijnt er in de kantlijn een getal tussen rechte haken, bijvoorbeeld <code class="docutils literal notranslate"><span class="pre">[2]</span></code>. Dit geeft de volgorde van de uitgevoerde cellen aan. Als je de cel nogmaals uitvoert, zie je een volgend getal. Als er een <code class="docutils literal notranslate"><span class="pre">[*]</span></code> staat rekent de server nog aan de cel. Als dat erg lang duurt, kun je het notebook soms beter opnieuw laden in de browser of opnieuw opstarten.</p>
 </div></blockquote>
 <p><strong>Aanpassen van een cel.</strong> Je kunt de code in een Code-cel eenvoudig aanpassen: selecteer de cel, en verander de tekst.</p>
 <p><strong>Verander de Python-code in de cel hieronder in:</strong> <code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">+</span> <span class="pre">3</span> <span class="pre">*</span> <span class="pre">5</span></code> en <strong>voer de cel uit</strong>.</p>
-<p>2 + 3</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 <div class="section" id="code-samengestelde-opdrachten">
 <h2>Code: samengestelde opdrachten<a class="headerlink" href="#code-samengestelde-opdrachten" title="Permalink to this headline">¶</a></h2>
@@ -457,12 +462,18 @@ Je <em>voert een cel uit</em> (<em>Run</em>) door op het pijl-symbool bovenin te
 <div class="section" id="opdrachten">
 <h2>Opdrachten<a class="headerlink" href="#opdrachten" title="Permalink to this headline">¶</a></h2>
 <ol class="simple">
-<li><p>pas de tekst in deze cel aan (edit-mode) en voer deze cel uit.</p></li>
+<li><p>pas de tekst in deze (Markdown) cel aan (in edit-mode) en voer deze cel uit.</p></li>
 <li><p>pas de tekst van de cel hieronder aan en voer die cel uit.</p></li>
-<li><p>verander het type van de cel hieronder en voer die cel uit.
+<li><p>verander het type van de cel hieronder van Code in Markdown en voer die cel uit.
 Let op het verschil tussen (2) en (3).</p></li>
 </ol>
-<p>2 + 3 * 4</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">*</span> <span class="mi">4</span>
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 <div class="section" id="code-werkt-over-meerdere-cellen">
 <h2>Code werkt over meerdere cellen<a class="headerlink" href="#code-werkt-over-meerdere-cellen" title="Permalink to this headline">¶</a></h2>

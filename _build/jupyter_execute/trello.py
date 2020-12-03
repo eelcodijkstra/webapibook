@@ -9,7 +9,7 @@ We vragen borden, lijsten en kaartjes op; en maken een bord aan, met daarop een 
 
 Een Trello-bord (board) bestaat uit een serie lijsten (lists); elke lijst bestaat uit een serie kaartjes (cards). Op de kaartjes kun je allerlei informatie plaatsen, en je kunt de kaartjes van de ene lijst naar de andere verplaatsen. Vaak-gebruikte lijsten zijn "To Do", "Doing", en "Done". 
 
-Andere Trello-begrippen zijn actions, attachments, organizations, enz. In dit materiaal gaan we daar niet verder op in. 
+Andere Trello-begrippen zijn acties (actions), attachments, organizations, enz. In dit materiaal gaan we daar niet verder op in. 
 
 De beschrijving van de Trello API vind je op https://developer.atlassian.com/cloud/trello/
 
@@ -18,8 +18,10 @@ De beschrijving van de Trello API vind je op https://developer.atlassian.com/clo
 Voor het gebruik van de Trello API hebben we de Python-libraries `requests` en `json` nodig.
 
 ```{tip} Uitvoeren van de opdrachten
-Je kunt de onderstaande opdrachten uitvoeren in een Jupyter Notebook.
+Je kunt de onderstaande opdrachten uitvoeren in een interactief Jupyter Notebook.
 Klik daarvoor op de Binder-knop hierboven, onder de "raket". Er wordt dan een server opgestart met dit hoofdstuk als interactief Notebook.
+
+Als je nog geen ervaring hebt met Jupyter Notebook, is het handig om eerst de [Inleiding Jupyter Notebook](Inleiding-Jupyter.ipynb) door te werken.
 ```
 
 import requests
@@ -36,7 +38,7 @@ Voor het gebruik van Trello via de normale user interface moet je inloggen, met 
 * Ga daarna met pijltjes naar volgende cel.
 
 api_key = input("API-key? ")
-print("ingevulde api_key" + api_key)
+print("ingevulde api_key: " + api_key)
 
 ## API-token
 
@@ -45,10 +47,10 @@ De stappen hieronder zijn een uitwerking daarvan.
 
 Het API-token geeft toegang tot de borden van de gebruiker. Via de onderstaande URL vraag je een token aan voor je eigen borden. Daar moet je toestemming voor geven.
 
-Je kunt de URL eventueel aanpassen: de URL hieronder geeft toestemming voor 1 dag, voor lezen en schrijven. Je kunt ook eerst werken met alleen lezen, maar voor de latere opdrachten heb je ook schrijfrechten nodig.
+Je kunt de URL eventueel aanpassen: de URL hieronder geeft toestemming voor 1 dag (`expiration=1day`), voor lezen en schrijven (`scope=read,write`). Je kunt ook kiezen voor een langere periode. Je kunt ook eerst werken met alleen lezen, maar voor de latere opdrachten heb je ook schrijfrechten nodig.
 
-* Voer eerst de cel hieronder uit; deze geeft een URL
-* Klik op die URL: daarmee krijg je een scherm waarin je toestemming moet geven voor toegang tot je borden.
+* Voer eerst de cel hieronder uit; deze geeft een URL als resultaat
+* **Klik op die URL**: daarmee krijg je een scherm waarin je toestemming moet geven voor toegang tot je borden.
 * Nadat je toestemming gegeven hebt krijg je een scherm met het token; kopieer dit token (Copy).
 
 url = "https://trello.com/1/authorize?expiration=1day&name=MyTestToken&scope=read,write&response_type=token&key=" + api_key
@@ -98,7 +100,7 @@ for board in boards:
 
 boards[-1]
 
-## Opvragen van lists
+## Opvragen van lijsten
 
 * De volgende stap is het opvragen van de lijsten van één van de borden, bijvoorbeeld het laatste bord uit het overzicht. (Pas dit eventueel hieronder aan.)
 
@@ -124,9 +126,9 @@ response.status_code
 lists = response.json()
 lists
 
-## Opvragen van de cards van een list
+## Opvragen van de lijst-kaartjes
 
-* De kaarten van de eerste lijst vraag je op met de URL `/lists/{id}/cards`, waarin `{id}` de identificatie van deze eerste lijst is:
+* De namen en id's van de kaartjes van de eerste lijst vraag je op met de URL `/lists/{id}/cards`, waarin `{id}` de identificatie van deze eerste lijst is:
 
 list_id = lists[0]["id"]
 
@@ -148,7 +150,7 @@ response.status_code
 cards = response.json()
 cards
 
-## Opvragen van een card
+## Opvragen van een kaartje
 
 * Met de volgende opdracht haal je de gegevens van het eerste kaartje uit de lijst op.
 * Pas eventueel de lijst met velden aan die je van dit kaartje wilt zien.
@@ -178,9 +180,15 @@ my_card
 * Zoek uit welke velden beschikbaar zijn voor een card (zie de API-beschrijving).
 * Voeg twee velden toe in bovenstaande code, en voer de opdracht nog een keer uit.
 
-## Een nieuw board
+## Een nieuw bord
 
-Maak een nieuw board aan, met de default-lijsten: 
+```{Admonition} Trello in het Nederlands?
+Bij deze opdrachten gaan er er van uit dat je de Engelstalige versie van Trello gebruikt.
+In de Nederlandstalige versie heten de lijsten anders.
+Pas waar nodig de programmatekst aan.
+```
+
+Maak een nieuw bord aan, met de default-lijsten: 
 
 * To Do, Doing, Done
 
@@ -200,12 +208,19 @@ response.status_code
 my_board = response.json()
 my_board
 
-**Opdracht (2e ronde)**
+**Opdracht (2e ronde - begin hier)**
 
 Voer deze opdracht uit nadat je alle onderstaande opdrachten uitgevoerd hebt, en het bord weer opgeruimd is.
 
-* Zoek uit hoe je in de API de lijsten van een nieuw bord aangeeft.
-* Maak een nieuw bord aan met de lijsten: `Backlog`, `To Do`, `Doing`, `Testing`, `Done`
+* Zoek uit hoe je een bord aanmaakt zonder de default-lijsten, en
+* Pas de opdracht hierboven om een leeg bord aan te maken
+* Zoek uit hoe je in de API een lijst aan een bord toevoegt
+* Voeg achtereenvolgens de lijsten `Backlog`, `To Do`, `Doing`, `Testing`, `Done` toe
+* Gebruik de onderstaande cellen voor het maken van een request voor het toevoegen van een lijst aan een bord.
+
+
+
+
 
 ## Bepaal lijsten
 
@@ -229,7 +244,7 @@ response.status_code
 my_lists = response.json()
 my_lists
 
-## Lists in Python dictionary
+## Lijsten in Python dictionary
 
 Om deze lijsten beter te kunnen hanteren maken we hiervan een Python dictionary, zodat je de identificatie van een lijst via de naam kunt vinden, bijvoorbeeld `list_ids["Done"].
 
@@ -243,7 +258,7 @@ for elem in my_lists:
 
 list_ids["To Do"]
 
-## Nieuwe card in To Do list
+## Nieuw kaartje in lijst *To Do*
 
 We kunnen nu een nieuw kaartje aanmaken in de lijst "To Do".
 Voor dit nieuwe kaartje kunnen we allerlei gegevens invullen; we beperken ons hier tot de naam, beschrijving en positie in de lijst.
@@ -273,8 +288,13 @@ new_card
 
 * zoek uit in de API-beschrijving welke gegevens je allemaal op een kaartje kunt invullen
 * maak nog een kaartje aan in dezelfde lijst, met een andere naam, en met één of meer labels.
+* gebruik hiervoor de onderstaande cellen.
 
-## Move card to Doing list
+
+
+
+
+## Verplaats kaartje naar lijst *Doing*
 
 Voor het wijzigen (update) van een kaartje gebruik je de method `PUT`.
 In de parameters geef je de velden aan die je wilt veranderen.
@@ -303,8 +323,13 @@ print(new_card["url"])
 
 * Zoek in de API-beschrijving uit welke velden je op een card kunt aanpassen.
 * Verander tenminste 1 ander veld op het kaartje
+* gebruik hiervoor de cellen hieronder
 
-## Delete card
+
+
+
+
+## Verwijder kaartje
 
 Soms moet je een kaartje verwijderen. Dat kan met de `DELETE` method.
 
@@ -324,7 +349,7 @@ response = requests.delete(
 )
 response.status_code
 
-## Delete board
+## Ruim het bord op
 
 Je kunt nu het bord weer opruimen, met een `DELETE` voor het bord.
 
