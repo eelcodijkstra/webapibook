@@ -10,7 +10,7 @@ Je krijgt dan deze pagina als interactief Jupyter Notebook in een nieuw venster.
 In dit Jupyter Notebook vind je de interactieve presentaties via onderstaande links:
 
 * [Inleiding web API's](presentaties/http-in-python.ipynb)
-* [Voorbeeld: Trello](http-rest.ipynb)
+* [Voorbeeld: Trello](presentaties/http-rest.ipynb)
 
 Je kunt deze in presentatie-modus starten met het "histogram-symbool" bovenin.
 
