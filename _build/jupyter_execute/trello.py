@@ -5,14 +5,6 @@ Trello ([https://trello.com](https://trello.com)) is een web-toepassing waarin j
 In dit hoofdstuk geven we een inleiding in het gebruik van deze web-API.
 We vragen borden, lijsten en kaartjes op; en maken een bord aan, met daarop een kaartje, dat we van de ene lijst naar de andere verplaatsen. En we ruimen het bord weer op.
 
-## Trello begrippen
-
-Een Trello-bord (board) bestaat uit een serie lijsten (lists); elke lijst bestaat uit een serie kaartjes (cards). Op de kaartjes kun je allerlei informatie plaatsen, en je kunt de kaartjes van de ene lijst naar de andere verplaatsen. Vaak-gebruikte lijsten zijn "To Do", "Doing", en "Done". 
-
-Andere Trello-begrippen zijn acties (actions), attachments, organizations, enz. In dit materiaal gaan we daar niet verder op in. 
-
-De beschrijving van de Trello API vind je op https://developer.atlassian.com/cloud/trello/
-
 ## Importeren Python libraries
 
 Voor het gebruik van de Trello API hebben we de Python-libraries `requests` en `json` nodig.
@@ -26,6 +18,14 @@ Als je nog geen ervaring hebt met Jupyter Notebook, is het handig om eerst de [I
 
 import requests
 import json
+
+## Trello begrippen
+
+Een Trello-bord (board) bestaat uit een serie lijsten (lists); elke lijst bestaat uit een serie kaartjes (cards). Op de kaartjes kun je allerlei informatie plaatsen, en je kunt de kaartjes van de ene lijst naar de andere verplaatsen. Vaak-gebruikte lijsten zijn "To Do", "Doing", en "Done". 
+
+Andere Trello-begrippen zijn acties (actions), attachments, organizations, enz. In dit materiaal gaan we daar niet verder op in. 
+
+De beschrijving van de Trello API vind je op [https://developer.atlassian.com/cloud/trello/](https://developer.atlassian.com/cloud/trello/)
 
 ## Authenticatie/autorisatie
 
