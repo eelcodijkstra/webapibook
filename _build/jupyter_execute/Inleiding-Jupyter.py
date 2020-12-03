@@ -6,7 +6,7 @@ Hiermee kun je op een interactieve manier aan de slag, waarbij je alle vrijheden
 ```{Tip} Opstarten als interactief notebook
 
 Start het interactieve notebook met de Launch Binder knop, onder de "raket" hierboven.
-Binder start dan een server voor het interactieve notebook in een apart browser-tabblad.
+Binder start dan een server voor het interactieve notebook.
 ```
 
 Een notebook bestaan uit cellen.
