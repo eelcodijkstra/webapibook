@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Inleiding &#8212; Het programmeerbare web</title>
+    <title>Presentaties &#8212; Het programmeerbare web</title>
     
   <link rel="stylesheet" href="_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -55,7 +55,7 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Het HTTP protocol" href="http.html" />
+    <link rel="prev" title="Tools" href="tools.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -90,12 +90,12 @@
 <nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
   <ul class="nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="#">
+  <a class="reference internal" href="inleiding.html">
    Inleiding
   </a>
  </li>
 </ul>
-<ul class="nav sidenav_l1">
+<ul class="current nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="http.html">
    Het HTTP protocol
@@ -126,8 +126,8 @@
    Tools
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="presentaties.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Presentaties
   </a>
  </li>
@@ -173,9 +173,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/inleiding.md"><button type="button"
+        <a class="dropdown-buttons" href="_sources/presentaties.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
+                data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -193,7 +193,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/eelcodijkstra/webapibook/issues/new?title=Issue%20on%20page%20%2Finleiding.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/eelcodijkstra/webapibook/issues/new?title=Issue%20on%20page%20%2Fpresentaties.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -209,10 +209,41 @@
 
         <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/eelcodijkstra/webapibook/master?urlpath=tree/presentaties.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
     </div>
 
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#naar-de-andere-notebooks">
+   Naar de andere notebooks
+  </a>
+ </li>
+</ul>
+
+        </nav>
         
     </div>
 </div>
@@ -221,24 +252,25 @@
         
               <div>
                 
-  <div class="section" id="inleiding">
-<h1>Inleiding<a class="headerlink" href="#inleiding" title="Permalink to this headline">¶</a></h1>
-<p>Het web is in eerste instantie bedoeld voor menselijk gebruik:
-via een webbrowser bezoek je webpagina’s en gebruik je webtoepassingen (web-apps).
-Deze webpagina’s en webtoepassingen gebruiken HTML-documenten met inhoud en interactie-elementen.
-Het web is op die manier het gebruikersinterface (UI) van het internet.</p>
-<p>Deze web-toepassingen hebben tegenwoordig ook vaak een ander interface,
-dat gericht is op het gebruik door computers:
-een Application Programming Interface (API).
-Deze API’s gebruiken hetzelfde protocol (HTTP) als het “normale” web.
-In plaats van HTML worden andere formaten gebruikt, zoals JSON of soms XML.</p>
-<p>Via zo’n API kun je een toepassing besturen:
-je kunt dit gebruiken voor het automatiseren van veel voorkomende taken,
-of om verschillende toepassingen samen te knopen (<em>integration</em>).
-Veel webtoepassingen bieden ondersteuning voor de integratie met andere toepasssingen:
-dit betekent dat de webtoepassing zelf alleen de eigen functies hoeft uit te voeren,
-en voor aanvullende functies een beroep kan doen op andere toepassingen.</p>
-<div class="toctree-wrapper compound">
+  <div class="section" id="presentaties">
+<h1>Presentaties<a class="headerlink" href="#presentaties" title="Permalink to this headline">¶</a></h1>
+<p>De presentaties bij dit materiaal vind je in de map “presentaties”.
+Je kunt deze uitvoeren via Binder:</p>
+<ul class="simple">
+<li><p>klik op de Binder-launch knop, onder de “raket” hierboven.</p></li>
+</ul>
+<p>Je krijgt dan deze pagina als interactief Jupyter Notebook in een nieuw venster.</p>
+<p>In dit Jupyter Notebook vind je de interactieve presentaties via onderstaande links:</p>
+<ul class="simple">
+<li><p><span class="xref myst">Inleiding web API’s</span></p></li>
+<li><p><span class="xref myst">Voorbeeld: Trello</span></p></li>
+</ul>
+<p>Je kunt deze in presentatie-modus starten met het “histogram-symbool” bovenin.</p>
+<p>Deze presentaties maken gebruik van Rise, voor reveal.js in Jupyter notebook: zie <a class="reference external" href="https://rise.readthedocs.io">https://rise.readthedocs.io</a>.</p>
+<div class="section" id="naar-de-andere-notebooks">
+<h2>Naar de andere notebooks<a class="headerlink" href="#naar-de-andere-notebooks" title="Permalink to this headline">¶</a></h2>
+<p>Je kunt vanuit een Jupyter Notebook in de browser, via Binder, naar de andere notebooks in hetzelfde repository navigeren door te klikken op het Jupyter logo linksboven. Je krijgt dan de vraag of je de pagina wilt verlaten; antwoord “ja”.
+In het venster krijg je dan de verschillende bestanden in het repository te zien. Je kunt een notebook actief maken door dit aan te klikken.</p>
 </div>
 </div>
 
@@ -270,7 +302,7 @@ en voor aanvullende functies een beroep kan doen op andere toepassingen.</p>
     
     <div class='prev-next-bottom'>
         
-    <a class='right-next' id="next-link" href="http.html" title="next page">Het HTTP protocol</a>
+    <a class='left-prev' id="prev-link" href="tools.html" title="previous page">Tools</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

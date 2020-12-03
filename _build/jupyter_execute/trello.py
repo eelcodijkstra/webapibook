@@ -17,8 +17,7 @@ De beschrijving van de Trello API vind je op https://developer.atlassian.com/clo
 
 Voor het gebruik van de Trello API hebben we de Python-libraries `requests` en `json` nodig.
 
-```{admonition} Tip: uitvoeren van de opdrachten
-:class: tip
+```{tip} Uitvoeren van de opdrachten
 Je kunt de onderstaande opdrachten uitvoeren in een Jupyter Notebook.
 Klik daarvoor op de Binder-knop hierboven, onder de "raket". Er wordt dan een server opgestart met dit hoofdstuk als interactief Notebook.
 ```
@@ -32,9 +31,12 @@ Voor het gebruik van Trello via de normale user interface moet je inloggen, met 
 
 * Log in bij Trello
 * Je Api-key kun je ophalen via: https://trello.com/app-key/
-* De waarde die je daar vindt vul je in als invoer voor de volgende cel (eerst uitvoeren: shift-return, dan invoer geven, met return; daarna met pijltjes naar volgende cel).
+* De waarde die je daar vindt vul je in als invoer voor de volgende cel (eerst uitvoeren: shift-return, dan invoer geven, afgesloten met de return-toets)
+* Je krijgt nu te zien: "ingevulde api_key", met de waarde 
+* Ga daarna met pijltjes naar volgende cel.
 
 api_key = input("API-key? ")
+print("ingevulde api_key" + api_key)
 
 ## API-token
 
@@ -52,10 +54,12 @@ Je kunt de URL eventueel aanpassen: de URL hieronder geeft toestemming voor 1 da
 url = "https://trello.com/1/authorize?expiration=1day&name=MyTestToken&scope=read,write&response_type=token&key=" + api_key
 print(url)
 
-* Voer de onderstaande cel uit, en vul (Paste) het token in bij de invoer.
+* Voer de onderstaande cel uit, en vul (Paste) het token in bij de invoer, gevolgd door een return.
+* Je krijgt te zien: "ingevuld token" met de ingevulde waarde.
 * Ga met de pijltjes naar de volgende cel.
 
 token = input("token? ")
+print("ingevuld token: ", token)
 
 ## Opvragen van borden
 

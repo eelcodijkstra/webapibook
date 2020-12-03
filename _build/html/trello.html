@@ -127,6 +127,11 @@
    Tools
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="presentaties.html">
+   Presentaties
+  </a>
+ </li>
 </ul>
 
 </nav>
@@ -337,9 +342,10 @@ We vragen borden, lijsten en kaartjes op; en maken een bord aan, met daarop een 
 <div class="section" id="importeren-python-libraries">
 <h2>Importeren Python libraries<a class="headerlink" href="#importeren-python-libraries" title="Permalink to this headline">¶</a></h2>
 <p>Voor het gebruik van de Trello API hebben we de Python-libraries <code class="docutils literal notranslate"><span class="pre">requests</span></code> en <code class="docutils literal notranslate"><span class="pre">json</span></code> nodig.</p>
-<div class="tip admonition">
-<p class="admonition-title">Tip: uitvoeren van de opdrachten</p>
-<p>Je kunt de onderstaande opdrachten uitvoeren in een Jupyter Notebook.
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Uitvoeren van de opdrachten
+Je kunt de onderstaande opdrachten uitvoeren in een Jupyter Notebook.
 Klik daarvoor op de Binder-knop hierboven, onder de “raket”. Er wordt dan een server opgestart met dit hoofdstuk als interactief Notebook.</p>
 </div>
 <div class="cell docutils container">
@@ -357,11 +363,14 @@ Klik daarvoor op de Binder-knop hierboven, onder de “raket”. Er wordt dan ee
 <ul class="simple">
 <li><p>Log in bij Trello</p></li>
 <li><p>Je Api-key kun je ophalen via: https://trello.com/app-key/</p></li>
-<li><p>De waarde die je daar vindt vul je in als invoer voor de volgende cel (eerst uitvoeren: shift-return, dan invoer geven, met return; daarna met pijltjes naar volgende cel).</p></li>
+<li><p>De waarde die je daar vindt vul je in als invoer voor de volgende cel (eerst uitvoeren: shift-return, dan invoer geven, afgesloten met de return-toets)</p></li>
+<li><p>Je krijgt nu te zien: “ingevulde api_key”, met de waarde</p></li>
+<li><p>Ga daarna met pijltjes naar volgende cel.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">api_key</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;API-key? &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ingevulde api_key&quot;</span> <span class="o">+</span> <span class="n">api_key</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -387,12 +396,22 @@ De stappen hieronder zijn een uitwerking daarvan.</p>
 </div>
 </div>
 <ul class="simple">
-<li><p>Voer de onderstaande cel uit, en vul (Paste) het token in bij de invoer.</p></li>
+<li><p>Voer de onderstaande cel uit, en vul (Paste) het token in bij de invoer, gevolgd door een return.</p></li>
+<li><p>Je krijgt te zien: “ingevuld token” met de ingevulde waarde.</p></li>
 <li><p>Ga met de pijltjes naar de volgende cel.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">token</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;token? &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ingevuld token: &quot;</span><span class="p">,</span> <span class="n">token</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>token?  hallo
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>token is:  hallo
 </pre></div>
 </div>
 </div>

@@ -8,7 +8,5 @@
 - file: trello
 - file: matrix
 - file: tools
-- file: content
-  sections:
-    - file: markdown
-    - file: notebooks
+- file: presentaties
+
