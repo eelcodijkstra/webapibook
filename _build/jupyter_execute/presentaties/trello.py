@@ -20,7 +20,7 @@ Voor het gebruik van de Trello API hebben we de Python-libraries `requests` en `
 ```{admonition} Tip: uitvoeren van de opdrachten
 :class: tip
 Je kunt de onderstaande opdrachten uitvoeren in een Jupyter Notebook.
-Klik daarvoor op de Binder-knop hierboven, onder de "raket". Er wordt dan een server opgestart met dit hoofdstuk als interactief Notebook.
+Klik daarvoor op de Binder-knop hierboven. Er wordt dan een server opgestart met dit hoofdstuk als interactief Notebook.
 ```
 
 import requests
@@ -30,16 +30,12 @@ import json
 
 Voor het gebruik van Trello via de normale user interface moet je inloggen, met een gebruikersnaam en wachtwoord. Op dezelfde manier moet je je identificeren en authenticeren bij het gebruik van de web-API. Daarvoor zijn twee onderdelen nodig: de Api-key, die gekoppeld is aan de ontwikkelaar (script-programmeur), en een token, dat gekoppeld is aan de gebruiker/borden, met de nodige toegangsrechten (autorisatie). 
 
-* Log in bij Trello
-* Je Api-key kun je ophalen via: https://trello.com/app-key/
+* Je Api-key kun je ophalen (nadat je eerst ingelogd bent bij Trello) via: https://trello.com/app-key/
 * De waarde die je daar vindt vul je in als invoer voor de volgende cel (eerst uitvoeren: shift-return, dan invoer geven, met return; daarna met pijltjes naar volgende cel).
 
 api_key = input("API-key? ")
 
 ## API-token
-
-De beschrijving van de authenticatie en autorisatie vind je op https://developer.atlassian.com/cloud/trello/guides/rest-api/authorization/ .
-De stappen hieronder zijn een uitwerking daarvan.
 
 Het API-token geeft toegang tot de borden van de gebruiker. Via de onderstaande URL vraag je een token aan voor je eigen borden. Daar moet je toestemming voor geven.
 

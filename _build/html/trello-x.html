@@ -1,0 +1,622 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trello: plannen met kaartjes &#8212; Het programmeerbare web</title>
+    
+  <link rel="stylesheet" href="_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  <img src="_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Het programmeerbare web</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="inleiding.html">
+   Inleiding
+  </a>
+ </li>
+</ul>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="http.html">
+   Het HTTP protocol
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python-http.html">
+   HTTP in Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="rest-apis.html">
+   REST API’s
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="trello.html">
+   Voorbeeld: Trello
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="matrix.html">
+   Matrix instant messaging
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="tools.html">
+   Tools
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/trello-x.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/eelcodijkstra/webapibook"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/eelcodijkstra/webapibook/issues/new?title=Issue%20on%20page%20%2Ftrello-x.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/eelcodijkstra/webapibook/master?urlpath=tree/trello-x.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#concepten-en-terminologie">
+   Concepten en terminologie
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#notebook-initialisatie">
+   Notebook initialisatie
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#trello-api">
+   Trello API
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#authenticatie-en-autorisatie-api-key-en-tokens">
+   Authenticatie en autorisatie: API-key en tokens
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#api-key">
+     API-key
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#token">
+     Token
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#maak-nieuwe-lijsten-aan">
+     Maak nieuwe lijsten aan
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#opmerkingen">
+   Opmerkingen
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="trello-plannen-met-kaartjes">
+<h1>Trello: plannen met kaartjes<a class="headerlink" href="#trello-plannen-met-kaartjes" title="Permalink to this headline">¶</a></h1>
+<p>Trello is een handige toepassing gebaseerd op het model van een planbord met kaartjes.
+Dit kun je onder andere gebruiken voor een <em>kanban</em>” planning.</p>
+<p>Trello heeft een REST API waarmee je de toepassing kunt besturen.
+Daarnaast kun je <em>webhooks</em> opgeven waarmee Trello bepaalde gebeurtenissen naar externe diensten kan signaleren.
+Bovendien heeft Trello de mogelijkheid om gegevens van andere toepassingen te bewaren,
+en om buttons voor de besturing van andere toepassingen in het user interface op te nemen.
+Dit zorgt ervoor dat Trello uitbreidbaar is, via “power-ups”:
+een soort apps op basis van Trello.
+Ook kan Trello hiermee gekoppeld worden aan andere toepassingen (“integrations”),
+bijvoorbeeld een berichtendienst als Slack, agenda’s en andere takenlijsten.</p>
+<div class="section" id="concepten-en-terminologie">
+<h2>Concepten en terminologie<a class="headerlink" href="#concepten-en-terminologie" title="Permalink to this headline">¶</a></h2>
+<p>Een bord (<em>board</em>) bestaat uit een reeks lijsten (<em>lists</em>) of kolommen.
+Elke lijst bevat 0 of meer kaartjes (<em>cards</em>).
+Elk bord, lijst of kaartje heeft een naam.</p>
+<p>Een kaartje kan allerlei gegevens bevatten, onder meer een todo-lijst.
+We gaan hier niet verder in de details op kaartjes.</p>
+</div>
+<div class="section" id="notebook-initialisatie">
+<h2>Notebook initialisatie<a class="headerlink" href="#notebook-initialisatie" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">json</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="trello-api">
+<h2>Trello API<a class="headerlink" href="#trello-api" title="Permalink to this headline">¶</a></h2>
+<p>De gegevens van het Trello API vind je op: https://developer.atlassian.com/cloud/trello/rest/.</p>
+</div>
+<div class="section" id="authenticatie-en-autorisatie-api-key-en-tokens">
+<h2>Authenticatie en autorisatie: API-key en tokens<a class="headerlink" href="#authenticatie-en-autorisatie-api-key-en-tokens" title="Permalink to this headline">¶</a></h2>
+<p>Om de Trello API te kunnen gebruiken heb je een <em>token</em> nodig.
+De beschrijving van de authenticatie en autorisatie vind je op https://developer.atlassian.com/cloud/trello/guides/rest-api/authorization/
+De stappen hieronder zijn een uitwerking daarvan.</p>
+<div class="section" id="api-key">
+<h3>API-key<a class="headerlink" href="#api-key" title="Permalink to this headline">¶</a></h3>
+<p>Elke Trello-gebruiker heeft een API-key. Dit is een identificatie van de gebruiker voor de API.
+Deze key heb je onder andere nodig om een <em>token</em> aan te vragen.</p>
+<ul class="simple">
+<li><p>log in bij Trello, en zoek je API-key op via: https://trello.com/app-key/</p></li>
+<li><p>vul je API-key hieronder in (voer de cel hieronder uit):</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">api_key</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;API-key? &quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="token">
+<h3>Token<a class="headerlink" href="#token" title="Permalink to this headline">¶</a></h3>
+<p>Voor deze oefening gebruik je een tijdelijk token.
+Dit vraag je aan via een URL in de browser.
+We maken eerst deze URL aan via Python, met behulp van je API-key.</p>
+<ul class="simple">
+<li><p>maak de URL aan (voer de cel hieronder uit)</p></li>
+<li><p>klik op de URL die als uitvoer verschijnt, en geef via de geopende webpagina toestemming voor het token</p></li>
+<li><p>kopieer (“Copy”) het token uit die webpagina om deze straks hieronder in te vullen</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://trello.com/1/authorize?expiration=1day&amp;name=MyTestToken&amp;scope=read,write&amp;response_type=token&amp;key=&quot;</span> <span class="o">+</span> <span class="n">api_key</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>vul het token hieronder in (voer de cel hieronder uit en “Paste”), voor gebruik in de volgende opdrachten.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">token</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;token? &quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>token?  ?
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Borden</span>
+
+<span class="n">Vraag</span> <span class="n">de</span> <span class="n">namen</span> <span class="n">van</span> <span class="n">je</span> <span class="n">borden</span> <span class="n">op</span> <span class="p">(</span><span class="n">als</span> <span class="n">je</span> <span class="n">die</span> <span class="n">hebt</span><span class="p">),</span> <span class="n">met</span> <span class="n">hun</span> <span class="n">ID</span><span class="s1">&#39;s.</span>
+<span class="n">Deze</span> <span class="n">ID</span><span class="s1">&#39;s heb je later nodig in de API.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Geef</span> <span class="n">op</span> <span class="n">welk</span> <span class="n">bord</span> <span class="n">je</span> <span class="ow">in</span> <span class="n">de</span> <span class="n">volgende</span> <span class="n">opdrachten</span> <span class="n">wilt</span> <span class="n">gebruiken</span><span class="p">:</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Lijsten</span>
+
+<span class="n">Vraag</span> <span class="n">de</span> <span class="n">lijsten</span> <span class="n">op</span> <span class="n">n</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Maak een nieuw bord aan</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bordnaam</span> <span class="o">=</span> <span class="s2">&quot;API-testbord&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://api.trello.com/1/members/me/boards&quot;</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+   <span class="s2">&quot;Accept&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span>
+<span class="p">}</span>
+
+<span class="n">query</span> <span class="o">=</span> <span class="p">{</span>
+   <span class="s1">&#39;key&#39;</span><span class="p">:</span> <span class="n">api_key</span><span class="p">,</span>
+   <span class="s1">&#39;token&#39;</span><span class="p">:</span> <span class="n">token</span>
+<span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">request</span><span class="p">(</span>
+   <span class="s2">&quot;GET&quot;</span><span class="p">,</span>
+   <span class="n">url</span><span class="p">,</span>
+   <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span>
+   <span class="n">params</span><span class="o">=</span><span class="n">query</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">response</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">boards</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">board</span> <span class="ow">in</span> <span class="n">boards</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">board</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span> <span class="s2">&quot; - &quot;</span><span class="p">,</span> <span class="n">board</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url1</span> <span class="o">=</span> <span class="s2">&quot;https://api.trello.com/1/board/&quot;</span> <span class="o">+</span> <span class="s2">&quot;52493e119ba1b91046002d9e&quot;</span> <span class="o">+</span> <span class="s2">&quot;/lists&quot;</span>
+
+<span class="n">response1</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">request</span><span class="p">(</span>
+   <span class="s2">&quot;GET&quot;</span><span class="p">,</span>
+   <span class="n">url1</span><span class="p">,</span>
+   <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span>
+   <span class="n">params</span><span class="o">=</span><span class="n">query</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">response1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lists</span> <span class="o">=</span> <span class="n">response1</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="k">for</span> <span class="nb">list</span> <span class="ow">in</span> <span class="n">lists</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span> <span class="s2">&quot; - &quot;</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url2</span> <span class="o">=</span> <span class="s2">&quot;https://api.trello.com/1/lists/&quot;</span> <span class="o">+</span> <span class="s2">&quot;52493e119ba1b91046002d9f&quot;</span> <span class="o">+</span> <span class="s2">&quot;/cards&quot;</span>
+<span class="n">response2</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">request</span><span class="p">(</span>
+   <span class="s2">&quot;GET&quot;</span><span class="p">,</span>
+   <span class="n">url2</span><span class="p">,</span>
+   <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span>
+   <span class="n">params</span><span class="o">=</span><span class="n">query</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">response2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">response2</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cards</span> <span class="o">=</span> <span class="n">response2</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">card</span> <span class="ow">in</span> <span class="n">cards</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">card</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span> <span class="s2">&quot; - &quot;</span><span class="p">,</span> <span class="n">card</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">),</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">separators</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">,</span> <span class="s2">&quot;: &quot;</span><span class="p">)))</span><span class="o">?</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="maak-nieuwe-lijsten-aan">
+<h3>Maak nieuwe lijsten aan<a class="headerlink" href="#maak-nieuwe-lijsten-aan" title="Permalink to this headline">¶</a></h3>
+<p>Op dit bord maak je de lijsten aan: “Backlog”, “ToDo”, “Doing”, “Testing”, “Done”, en “Archive”</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">response</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">api_key</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">token</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="opmerkingen">
+<h2>Opmerkingen<a class="headerlink" href="#opmerkingen" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>in de code moeten we rekening houden met het resultaat van de response. Alleen als het resultaat “200” is, mogen we de inhoud (json) opvragen.</p></li>
+<li><p>kunnen we handig gebruik maken van Python format strings, voor het maken van de URLs?</p></li>
+<li><p>HTTP goed uitleggen, verschil tussen parameters en body/payload/</p></li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Eelco Dijkstra<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>
