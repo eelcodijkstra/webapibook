@@ -9,7 +9,8 @@ We vragen borden, lijsten en kaartjes op; en maken een bord aan, met daarop een 
 
 Voor het gebruik van de Trello API hebben we de Python-libraries `requests` en `json` nodig.
 
-```{tip} Uitvoeren van de opdrachten
+```{Admonition} Tip: uitvoeren van de opdrachten
+:class: tip
 Je kunt de onderstaande opdrachten uitvoeren in een interactief Jupyter Notebook.
 Klik daarvoor op de Binder-knop hierboven, onder de "raket". Er wordt dan een server opgestart met dit hoofdstuk als interactief Notebook.
 
