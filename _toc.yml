@@ -7,11 +7,13 @@
 - file: rest-apis
 - file: trello
 - file: matrix
+- file: trello-webhook
 - file: tools
 - file: presentaties
   sections:
-  - file: presentaties/http-in-python.ipynb
-  - file: presentaties/http-rest.ipynb
+  - file: presentaties/http-in-python
+  - file: presentaties/http-rest
+  - file: presentaties/matrix-presentatie
 - file: Inleiding-Jupyter.ipynb
 - file: binder
 

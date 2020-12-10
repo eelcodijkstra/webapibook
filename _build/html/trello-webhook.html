@@ -1,0 +1,718 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trello-webhooks via NodeRed &#8212; Het programmeerbare web</title>
+    
+  <link rel="stylesheet" href="_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Tools en links" href="tools.html" />
+    <link rel="prev" title="Matrix instant messaging" href="matrix.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  <img src="_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Het programmeerbare web</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="inleiding.html">
+   Inleiding
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="http.html">
+   Het HTTP protocol
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python-http.html">
+   HTTP in Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="rest-apis.html">
+   REST API’s
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="trello.html">
+   Voorbeeld: Trello
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="matrix.html">
+   Matrix instant messaging
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Trello-webhooks via NodeRed
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="tools.html">
+   Tools en links
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="presentaties.html">
+   Presentaties
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Inleiding-Jupyter.html">
+   Inleiding Jupyter Notebooks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="binder.html">
+   Binder
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/trello-webhook.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/eelcodijkstra/webapibook"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/eelcodijkstra/webapibook/issues/new?title=Issue%20on%20page%20%2Ftrello-webhook.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/eelcodijkstra/webapibook/master?urlpath=tree/trello-webhook.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#nodered">
+   NodeRed
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#nodered-naar-matrix">
+   NodeRed naar Matrix
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#credentials-node">
+     Credentials node
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#flow">
+     Flow
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#importeren-van-de-test-flow">
+     Importeren van de test-flow
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#invullen-van-de-credentials">
+     Invullen van de credentials
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#uitvoeren-van-de-test-flow">
+     Uitvoeren van de test-flow
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#stap-2-maken-van-een-nodered-webserver">
+   Stap 2: Maken van een NodeRed-webserver
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#testen-van-de-webserver">
+     Testen van de webserver
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#test-post-url">
+     Test: POST-URL
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#webserver-flow-koppelen-aan-matrix-flow">
+     Webserver-flow koppelen aan Matrix-flow
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#test-de-gecombineerd-webserver-matrix-flow">
+     Test de gecombineerd webserver-Matrix flow
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#stap-3-trello-webhook">
+   Stap 3: Trello webhook
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#aanmaken-van-een-trello-token">
+     Aanmaken van een Trello-token
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bord-id">
+     Bord-id
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#webhook-url">
+     webhook-URL
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#de-ultieme-test">
+   De ultieme test
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="trello-webhooks-via-nodered">
+<h1>Trello-webhooks via NodeRed<a class="headerlink" href="#trello-webhooks-via-nodered" title="Permalink to this headline">¶</a></h1>
+<p>Het HTTP-protocol is een client-server protocol, waarbij het initiatief voor de communicatie altijd bij de client ligt.
+Dit betekent dat de server niet op een willekeurig moment een bericht naar de client kan sturen.</p>
+<p>Voor samenwerkende toepassingen heb je soms twee-richtingsverkeer nodig, waarbij elke partij het initiatief kan nemen tot de communicatie. Denk in het geval van Trello bijvoorbeeld aan een verandering in een bord via een gebruiker: daar wil je een toepassing die aan Trello gekoppeld is direct van op de hoogte kunnen stellen.</p>
+<p>Een veel-gebruikte aanpak hiervoor vormen <em>webhooks</em>: je kunt aan Trello een URL (<em>webhook</em>) opgeven waar Trello een HTTP-request naar stuurt bij een bepaalde gebeurtenis, bijvoorbeeld een verandering in een bord.</p>
+<p>Een probleem is dat de toepassing dan zelf een API-URL moet hebben. Dit betekent dat je een server nodig hebt in het publieke internet.</p>
+<p>Voor demonstratie/experimenteerdoeleinden zijn er meerdere manieren om een (tijdelijke) server te maken. Dit kan met NodeRed, zoals we hier zullen doen; of bijvoorbeeld met glitch (glitch.com).</p>
+<p>In het onderstaande voorbeeld maken we met NodeRed een server die Trello koppelt aan Matrix: bij een actie op een gegeven Trello-bord krijg je een bericht in Matrix.</p>
+<p>We zullen dit voorbeeld in een aantal stappen uitwerken:</p>
+<ol class="simple">
+<li><p>NodeRed: het versturen van een bericht vanuit NodeRed naar Matrix.</p></li>
+<li><p>NodeRed: webserver met GET en POST, die we vanuit Jupyter testen.</p></li>
+<li><p>Installeren van de webhook bij Trello</p></li>
+</ol>
+<div class="section" id="nodered">
+<h2>NodeRed<a class="headerlink" href="#nodered" title="Permalink to this headline">¶</a></h2>
+<p>In NodeRed (https://nodered.org) kun je op een grafische manier verschillende diensten en API’s koppelen.
+Je kunt een webserver maken, voor het afhandelen van HTTP-requests.
+En je kunt HTTP-requests versturen naar andere servers.
+Daarnaast kun je allerlei andere internet-protocollen gebruiken, zoals UDP, TCP en MQTT.</p>
+<p>Op een Raspberry Pi kun je de hardware-pinnen besturen vanuit NodeRed.</p>
+<p>NodeRed is open source software. Je kunt dit op je eigen laptop installeneren, of op een server in het internet. NodeRed is onderdeel van de standaard-distributie voor de Raspberry Pi.</p>
+<p>Voor de volgende opdrachten heb je een installatie van NodeRed nodig die vanuit het publieke internet bereikbaar is. (Waarschijnlijk voldoet NodeRed op je eigen laptop niet aan die voorwaarde.)
+De beschrijving hieronder is gebaseerd op de online NodeRed-dienst FRED (https://fred.sensetecnic.com); je kunt daar een gratis account aanmaken, dat geeft voor deze opdrachten voldoende mogelijkheden.</p>
+<p>Als eerste stap maak je nu van een test-flow voor Matrix.</p>
+</div>
+<div class="section" id="nodered-naar-matrix">
+<h2>NodeRed naar Matrix<a class="headerlink" href="#nodered-naar-matrix" title="Permalink to this headline">¶</a></h2>
+<p>Vanuit NodeRed kun je HTTP-requests versturen naar Matrix. Voor het versturen van tekst-berichten moet je een <em>token</em> hebben. Dit token krijg je door in te loggen bij Matrix, zie het hoofdstuk over Matrix.</p>
+<p>Daarnaast heb je de identificatie van een <em>room</em> nodig waarvoor je als gebruiker aangemeld bent.</p>
+<p>Voor de volgende stappen heb je dus nodig:</p>
+<ul class="simple">
+<li><p>je Matrix username</p></li>
+<li><p>je Matrix password</p></li>
+<li><p>een Matrix roomid</p></li>
+</ul>
+<div class="section" id="credentials-node">
+<h3>Credentials node<a class="headerlink" href="#credentials-node" title="Permalink to this headline">¶</a></h3>
+<p>Deze gegevens vul je in in een “credentials” node. Bij het kopiëren van deze node worden deze gegevens niet meegekopieerd, zodat deze niet zomaar uitlekken. Deze node moet je eerst installeren.</p>
+<p>In FRED:</p>
+<ul class="simple">
+<li><p>selecteer in de FRED sidebar (donkere zijbalk links): Add or Remove Nodes</p></li>
+<li><p>zoek (bij “search nodes”) naar “Credentials”</p></li>
+<li><p>vink de Credentials-node aan</p></li>
+<li><p>herstart je FRED NodeRed virtuele machine</p></li>
+</ul>
+</div>
+<div class="section" id="flow">
+<h3>Flow<a class="headerlink" href="#flow" title="Permalink to this headline">¶</a></h3>
+<p><img alt="nodered-matrix-testflow" src="_images/nodered-matrix-testflow.png" /></p>
+<p>Hierboven zie je de Matrix test-flow.</p>
+</div>
+<div class="section" id="importeren-van-de-test-flow">
+<h3>Importeren van de test-flow<a class="headerlink" href="#importeren-van-de-test-flow" title="Permalink to this headline">¶</a></h3>
+<p>Je importeert deze als volgt in NodeRed:</p>
+<ul class="simple">
+<li><p>kopieer de onderstaande JSON-code (“Copy”)</p></li>
+<li><p>ga naar het NodeRed-venster</p></li>
+<li><p>selecteer in het hamburger-menu rechts boven: Import</p></li>
+<li><p>“Paste” de JSON-code in het venster</p></li>
+<li><p>en klik op de “Import” button</p></li>
+</ul>
+<p>Als het goed is heb je nu een tab gekregen met als naam “Matrix test-flow”, met deze flow.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;2d7b69c0.da1286&quot;</span><span class="p">,</span><span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;tab&quot;</span><span class="p">,</span><span class="s2">&quot;label&quot;</span><span class="p">:</span><span class="s2">&quot;Matrix test-flow&quot;</span><span class="p">,</span><span class="s2">&quot;disabled&quot;</span><span class="p">:</span><span class="n">false</span><span class="p">,</span><span class="s2">&quot;info&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">},{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;9ae15617.f83318&quot;</span><span class="p">,</span><span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;inject&quot;</span><span class="p">,</span><span class="s2">&quot;z&quot;</span><span class="p">:</span><span class="s2">&quot;2d7b69c0.da1286&quot;</span><span class="p">,</span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="s2">&quot;topic&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="s2">&quot;payload&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="s2">&quot;payloadType&quot;</span><span class="p">:</span><span class="s2">&quot;date&quot;</span><span class="p">,</span><span class="s2">&quot;repeat&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="s2">&quot;crontab&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="s2">&quot;once&quot;</span><span class="p">:</span><span class="n">false</span><span class="p">,</span><span class="s2">&quot;onceDelay&quot;</span><span class="p">:</span><span class="mf">0.1</span><span class="p">,</span><span class="s2">&quot;x&quot;</span><span class="p">:</span><span class="mi">116</span><span class="p">,</span><span class="s2">&quot;y&quot;</span><span class="p">:</span><span class="mi">120</span><span class="p">,</span><span class="s2">&quot;wires&quot;</span><span class="p">:[[</span><span class="s2">&quot;20d4553d.d3444a&quot;</span><span class="p">]]},{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;a4809466.7d1468&quot;</span><span class="p">,</span><span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;http request&quot;</span><span class="p">,</span><span class="s2">&quot;z&quot;</span><span class="p">:</span><span class="s2">&quot;2d7b69c0.da1286&quot;</span><span class="p">,</span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="s2">&quot;method&quot;</span><span class="p">:</span><span class="s2">&quot;use&quot;</span><span class="p">,</span><span class="s2">&quot;ret&quot;</span><span class="p">:</span><span class="s2">&quot;txt&quot;</span><span class="p">,</span><span class="s2">&quot;paytoqs&quot;</span><span class="p">:</span><span class="n">false</span><span class="p">,</span><span class="s2">&quot;url&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="s2">&quot;tls&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="s2">&quot;persist&quot;</span><span class="p">:</span><span class="n">false</span><span class="p">,</span><span class="s2">&quot;proxy&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="s2">&quot;authType&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="s2">&quot;x&quot;</span><span class="p">:</span><span class="mi">406</span><span class="p">,</span><span class="s2">&quot;y&quot;</span><span class="p">:</span><span class="mi">200</span><span class="p">,</span><span class="s2">&quot;wires&quot;</span><span class="p">:[[</span><span class="s2">&quot;88ea5a68.11419&quot;</span><span class="p">]]},{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;15b879aa.461a3e&quot;</span><span class="p">,</span><span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;debug&quot;</span><span class="p">,</span><span class="s2">&quot;z&quot;</span><span class="p">:</span><span class="s2">&quot;2d7b69c0.da1286&quot;</span><span class="p">,</span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="s2">&quot;active&quot;</span><span class="p">:</span><span class="n">true</span><span class="p">,</span><span class="s2">&quot;tosidebar&quot;</span><span class="p">:</span><span class="n">true</span><span class="p">,</span><span class="s2">&quot;console&quot;</span><span class="p">:</span><span class="n">false</span><span class="p">,</span><span class="s2">&quot;tostatus&quot;</span><span class="p">:</span><span class="n">false</span><span class="p">,</span><span class="s2">&quot;complete&quot;</span><span class="p">:</span><span class="s2">&quot;false&quot;</span><span class="p">,</span><span class="s2">&quot;x&quot;</span><span class="p">:</span><span class="mi">466</span><span class="p">,</span><span class="s2">&quot;y&quot;</span><span class="p">:</span><span class="mi">260</span><span class="p">,</span><span class="s2">&quot;wires&quot;</span><span class="p">:[]},{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;237fafd1.56a5c8&quot;</span><span class="p">,</span><span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;function&quot;</span><span class="p">,</span><span class="s2">&quot;z&quot;</span><span class="p">:</span><span class="s2">&quot;2d7b69c0.da1286&quot;</span><span class="p">,</span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;Prepare Matrix login&quot;</span><span class="p">,</span><span class="s2">&quot;func&quot;</span><span class="p">:</span><span class="s2">&quot;request_data = {</span><span class="se">\n</span><span class="s2">  </span><span class="se">\&quot;</span><span class="s2">identifier</span><span class="se">\&quot;</span><span class="s2">: {</span><span class="se">\n</span><span class="s2">    </span><span class="se">\&quot;</span><span class="s2">type</span><span class="se">\&quot;</span><span class="s2">: </span><span class="se">\&quot;</span><span class="s2">m.id.user</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\n</span><span class="s2">    </span><span class="se">\&quot;</span><span class="s2">user</span><span class="se">\&quot;</span><span class="s2">: msg.matrix_username</span><span class="se">\n</span><span class="s2">  },</span><span class="se">\n</span><span class="s2">  </span><span class="se">\&quot;</span><span class="s2">initial_device_display_name</span><span class="se">\&quot;</span><span class="s2">: msg.matrix_username,</span><span class="se">\n</span><span class="s2">  </span><span class="se">\&quot;</span><span class="s2">password</span><span class="se">\&quot;</span><span class="s2">: msg.matrix_password,</span><span class="se">\n</span><span class="s2">  </span><span class="se">\&quot;</span><span class="s2">type</span><span class="se">\&quot;</span><span class="s2">: </span><span class="se">\&quot;</span><span class="s2">m.login.password</span><span class="se">\&quot;\n</span><span class="s2">}</span><span class="se">\n</span><span class="s2">req = </span><span class="si">{}</span><span class="s2">;</span><span class="se">\n</span><span class="s2">req.url = &#39;https://matrix.org/_matrix/client/r0/login&#39;;</span><span class="se">\n</span><span class="s2">req.method = </span><span class="se">\&quot;</span><span class="s2">POST</span><span class="se">\&quot;</span><span class="s2">;</span><span class="se">\n</span><span class="s2">req.payload = request_data;</span><span class="se">\n</span><span class="s2">return req;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="s2">&quot;outputs&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="s2">&quot;noerr&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="s2">&quot;x&quot;</span><span class="p">:</span><span class="mi">156</span><span class="p">,</span><span class="s2">&quot;y&quot;</span><span class="p">:</span><span class="mi">200</span><span class="p">,</span><span class="s2">&quot;wires&quot;</span><span class="p">:[[</span><span class="s2">&quot;a4809466.7d1468&quot;</span><span class="p">]]},{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;5507de0a.5634d8&quot;</span><span class="p">,</span><span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;inject&quot;</span><span class="p">,</span><span class="s2">&quot;z&quot;</span><span class="p">:</span><span class="s2">&quot;2d7b69c0.da1286&quot;</span><span class="p">,</span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="s2">&quot;topic&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="s2">&quot;payload&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="s2">&quot;payloadType&quot;</span><span class="p">:</span><span class="s2">&quot;date&quot;</span><span class="p">,</span><span class="s2">&quot;repeat&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="s2">&quot;crontab&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="s2">&quot;once&quot;</span><span class="p">:</span><span class="n">false</span><span class="p">,</span><span class="s2">&quot;onceDelay&quot;</span><span class="p">:</span><span class="mf">0.1</span><span class="p">,</span><span class="s2">&quot;x&quot;</span><span class="p">:</span><span class="mi">116</span><span class="p">,</span><span class="s2">&quot;y&quot;</span><span class="p">:</span><span class="mi">380</span><span class="p">,</span><span class="s2">&quot;wires&quot;</span><span class="p">:[[</span><span class="s2">&quot;a62dbb0f.760d68&quot;</span><span class="p">]]},{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;d89e8191.235fa8&quot;</span><span class="p">,</span><span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;http request&quot;</span><span class="p">,</span><span class="s2">&quot;z&quot;</span><span class="p">:</span><span class="s2">&quot;2d7b69c0.da1286&quot;</span><span class="p">,</span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="s2">&quot;method&quot;</span><span class="p">:</span><span class="s2">&quot;use&quot;</span><span class="p">,</span><span class="s2">&quot;ret&quot;</span><span class="p">:</span><span class="s2">&quot;txt&quot;</span><span class="p">,</span><span class="s2">&quot;paytoqs&quot;</span><span class="p">:</span><span class="n">false</span><span class="p">,</span><span class="s2">&quot;url&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="s2">&quot;tls&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="s2">&quot;persist&quot;</span><span class="p">:</span><span class="n">false</span><span class="p">,</span><span class="s2">&quot;proxy&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="s2">&quot;authType&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="s2">&quot;x&quot;</span><span class="p">:</span><span class="mi">406</span><span class="p">,</span><span class="s2">&quot;y&quot;</span><span class="p">:</span><span class="mi">440</span><span class="p">,</span><span class="s2">&quot;wires&quot;</span><span class="p">:[[</span><span class="s2">&quot;81074d70.ba47e&quot;</span><span class="p">]]},{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;81074d70.ba47e&quot;</span><span class="p">,</span><span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;debug&quot;</span><span class="p">,</span><span class="s2">&quot;z&quot;</span><span class="p">:</span><span class="s2">&quot;2d7b69c0.da1286&quot;</span><span class="p">,</span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="s2">&quot;active&quot;</span><span class="p">:</span><span class="n">true</span><span class="p">,</span><span class="s2">&quot;tosidebar&quot;</span><span class="p">:</span><span class="n">true</span><span class="p">,</span><span class="s2">&quot;console&quot;</span><span class="p">:</span><span class="n">false</span><span class="p">,</span><span class="s2">&quot;tostatus&quot;</span><span class="p">:</span><span class="n">false</span><span class="p">,</span><span class="s2">&quot;complete&quot;</span><span class="p">:</span><span class="s2">&quot;false&quot;</span><span class="p">,</span><span class="s2">&quot;x&quot;</span><span class="p">:</span><span class="mi">406</span><span class="p">,</span><span class="s2">&quot;y&quot;</span><span class="p">:</span><span class="mi">500</span><span class="p">,</span><span class="s2">&quot;wires&quot;</span><span class="p">:[]},{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;df0f9101.e7d3d8&quot;</span><span class="p">,</span><span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;function&quot;</span><span class="p">,</span><span class="s2">&quot;z&quot;</span><span class="p">:</span><span class="s2">&quot;2d7b69c0.da1286&quot;</span><span class="p">,</span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;Prepare Matrix message&quot;</span><span class="p">,</span><span class="s2">&quot;func&quot;</span><span class="p">:</span><span class="s2">&quot;token = flow.get(</span><span class="se">\&quot;</span><span class="s2">matrix_token</span><span class="se">\&quot;</span><span class="s2">)</span><span class="se">\n</span><span class="s2">roomid = flow.get(</span><span class="se">\&quot;</span><span class="s2">matrix_roomid</span><span class="se">\&quot;</span><span class="s2">)</span><span class="se">\n</span><span class="s2">txnr = flow.get(</span><span class="se">\&quot;</span><span class="s2">txnr</span><span class="se">\&quot;</span><span class="s2">)||0</span><span class="se">\n</span><span class="s2">txnr = txnr + 1</span><span class="se">\n</span><span class="s2">flow.set(</span><span class="se">\&quot;</span><span class="s2">txnr</span><span class="se">\&quot;</span><span class="s2">, txnr)</span><span class="se">\n</span><span class="s2">req = </span><span class="si">{}</span><span class="se">\n</span><span class="s2">req.url = `https://matrix.org/_matrix/client/r0/rooms/$</span><span class="si">{roomid}</span><span class="s2">/send/m.room.message/$</span><span class="si">{txnr}</span><span class="s2">?access_token=$</span><span class="si">{token}</span><span class="s2">`</span><span class="se">\n</span><span class="s2">req.method = </span><span class="se">\&quot;</span><span class="s2">PUT</span><span class="se">\&quot;\n</span><span class="s2">req.payload = msg.payload</span><span class="se">\n</span><span class="s2">msg = req</span><span class="se">\n</span><span class="s2">return msg;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="s2">&quot;outputs&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="s2">&quot;noerr&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="s2">&quot;x&quot;</span><span class="p">:</span><span class="mi">166</span><span class="p">,</span><span class="s2">&quot;y&quot;</span><span class="p">:</span><span class="mi">440</span><span class="p">,</span><span class="s2">&quot;wires&quot;</span><span class="p">:[[</span><span class="s2">&quot;d89e8191.235fa8&quot;</span><span class="p">]]},{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;a62dbb0f.760d68&quot;</span><span class="p">,</span><span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;template&quot;</span><span class="p">,</span><span class="s2">&quot;z&quot;</span><span class="p">:</span><span class="s2">&quot;2d7b69c0.da1286&quot;</span><span class="p">,</span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="s2">&quot;field&quot;</span><span class="p">:</span><span class="s2">&quot;payload&quot;</span><span class="p">,</span><span class="s2">&quot;fieldType&quot;</span><span class="p">:</span><span class="s2">&quot;msg&quot;</span><span class="p">,</span><span class="s2">&quot;format&quot;</span><span class="p">:</span><span class="s2">&quot;json&quot;</span><span class="p">,</span><span class="s2">&quot;syntax&quot;</span><span class="p">:</span><span class="s2">&quot;mustache&quot;</span><span class="p">,</span><span class="s2">&quot;template&quot;</span><span class="p">:</span><span class="s2">&quot;{</span><span class="se">\n</span><span class="s2">    </span><span class="se">\&quot;</span><span class="s2">body</span><span class="se">\&quot;</span><span class="s2">: </span><span class="se">\&quot;</span><span class="s2">Hello from FRED/NodeRed</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\n</span><span class="s2">    </span><span class="se">\&quot;</span><span class="s2">msgtype</span><span class="se">\&quot;</span><span class="s2">: </span><span class="se">\&quot;</span><span class="s2">m.text</span><span class="se">\&quot;\n</span><span class="s2">}&quot;</span><span class="p">,</span><span class="s2">&quot;output&quot;</span><span class="p">:</span><span class="s2">&quot;json&quot;</span><span class="p">,</span><span class="s2">&quot;x&quot;</span><span class="p">:</span><span class="mi">276</span><span class="p">,</span><span class="s2">&quot;y&quot;</span><span class="p">:</span><span class="mi">380</span><span class="p">,</span><span class="s2">&quot;wires&quot;</span><span class="p">:[[</span><span class="s2">&quot;df0f9101.e7d3d8&quot;</span><span class="p">]]},{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;c566724a.71251&quot;</span><span class="p">,</span><span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;function&quot;</span><span class="p">,</span><span class="s2">&quot;z&quot;</span><span class="p">:</span><span class="s2">&quot;2d7b69c0.da1286&quot;</span><span class="p">,</span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;save token&quot;</span><span class="p">,</span><span class="s2">&quot;func&quot;</span><span class="p">:</span><span class="s2">&quot;if (msg.statusCode == 200) {</span><span class="se">\n</span><span class="s2">    token = msg.payload.access_token;</span><span class="se">\n</span><span class="s2">    flow.set(</span><span class="se">\&quot;</span><span class="s2">matrix_token</span><span class="se">\&quot;</span><span class="s2">, token);</span><span class="se">\n</span><span class="s2">} else {</span><span class="se">\n</span><span class="s2">    flow.set(</span><span class="se">\&quot;</span><span class="s2">matrix_token</span><span class="se">\&quot;</span><span class="s2">, </span><span class="se">\&quot;</span><span class="s2">no-token</span><span class="se">\&quot;</span><span class="s2">);</span><span class="se">\n</span><span class="s2">}</span><span class="se">\n</span><span class="s2">return msg;&quot;</span><span class="p">,</span><span class="s2">&quot;outputs&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="s2">&quot;noerr&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="s2">&quot;x&quot;</span><span class="p">:</span><span class="mi">266</span><span class="p">,</span><span class="s2">&quot;y&quot;</span><span class="p">:</span><span class="mi">260</span><span class="p">,</span><span class="s2">&quot;wires&quot;</span><span class="p">:[[</span><span class="s2">&quot;15b879aa.461a3e&quot;</span><span class="p">]]},{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;20d4553d.d3444a&quot;</span><span class="p">,</span><span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;credentials&quot;</span><span class="p">,</span><span class="s2">&quot;z&quot;</span><span class="p">:</span><span class="s2">&quot;2d7b69c0.da1286&quot;</span><span class="p">,</span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;Matrix-credentials&quot;</span><span class="p">,</span><span class="s2">&quot;props&quot;</span><span class="p">:[{</span><span class="s2">&quot;value&quot;</span><span class="p">:</span><span class="s2">&quot;matrix_username&quot;</span><span class="p">,</span><span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;msg&quot;</span><span class="p">},{</span><span class="s2">&quot;value&quot;</span><span class="p">:</span><span class="s2">&quot;matrix_password&quot;</span><span class="p">,</span><span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;msg&quot;</span><span class="p">},{</span><span class="s2">&quot;value&quot;</span><span class="p">:</span><span class="s2">&quot;matrix_roomid&quot;</span><span class="p">,</span><span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;flow&quot;</span><span class="p">}],</span><span class="s2">&quot;x&quot;</span><span class="p">:</span><span class="mi">306</span><span class="p">,</span><span class="s2">&quot;y&quot;</span><span class="p">:</span><span class="mi">120</span><span class="p">,</span><span class="s2">&quot;wires&quot;</span><span class="p">:[[</span><span class="s2">&quot;237fafd1.56a5c8&quot;</span><span class="p">]]},{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;88ea5a68.11419&quot;</span><span class="p">,</span><span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;json&quot;</span><span class="p">,</span><span class="s2">&quot;z&quot;</span><span class="p">:</span><span class="s2">&quot;2d7b69c0.da1286&quot;</span><span class="p">,</span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="s2">&quot;property&quot;</span><span class="p">:</span><span class="s2">&quot;payload&quot;</span><span class="p">,</span><span class="s2">&quot;action&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="s2">&quot;pretty&quot;</span><span class="p">:</span><span class="n">false</span><span class="p">,</span><span class="s2">&quot;x&quot;</span><span class="p">:</span><span class="mi">106</span><span class="p">,</span><span class="s2">&quot;y&quot;</span><span class="p">:</span><span class="mi">260</span><span class="p">,</span><span class="s2">&quot;wires&quot;</span><span class="p">:[[</span><span class="s2">&quot;c566724a.71251&quot;</span><span class="p">]]}]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="invullen-van-de-credentials">
+<h3>Invullen van de credentials<a class="headerlink" href="#invullen-van-de-credentials" title="Permalink to this headline">¶</a></h3>
+<p>De volgende stap is het invullen van de credentials:</p>
+<ol class="simple">
+<li><p>double-click op de node Credentials, om deze te configureren</p></li>
+<li><p>vul je Matrix-<em>username</em> in als “value” bij <code class="docutils literal notranslate"><span class="pre">flow.matrix_username</span></code></p></li>
+<li><p>vul je Matrix-<em>password</em> in als “value” bij <code class="docutils literal notranslate"><span class="pre">flow.matrix_password</span></code></p></li>
+<li><p>vul de <code class="docutils literal notranslate"><span class="pre">roomid</span></code> in als “value” bij <code class="docutils literal notranslate"><span class="pre">flow.matrix_roomid</span></code></p></li>
+<li><p>klik op “Done”</p></li>
+</ol>
+</div>
+<div class="section" id="uitvoeren-van-de-test-flow">
+<h3>Uitvoeren van de test-flow<a class="headerlink" href="#uitvoeren-van-de-test-flow" title="Permalink to this headline">¶</a></h3>
+<p>Je kunt nu deze test-flow uitvoeren:</p>
+<ol class="simple">
+<li><p>klik op “Deploy” (rode knop rechtsboven)</p></li>
+<li><p>genereer het token: klik op de knop (links) van de bovenste Insert-node.</p></li>
+<li><p>stuur een message: klikop de knop van de onderste Insert-node</p></li>
+</ol>
+<p>Let goed op de uitvoer in het Debug-window (Debug-tab, “kevertje”, rechter zijbalk). Hier moet je eerst de uitvoer zien met het token. En na het versturen van de tekst-message krijg je daar de ID van dit bericht.</p>
+<p>Als het goed is resulteert dit in een bericht naar Matrix.</p>
+</div>
+</div>
+<div class="section" id="stap-2-maken-van-een-nodered-webserver">
+<h2>Stap 2: Maken van een NodeRed-webserver<a class="headerlink" href="#stap-2-maken-van-een-nodered-webserver" title="Permalink to this headline">¶</a></h2>
+<p>De volgende stap is het maken van een webserver in NodeRed waarmee Trello berichten naar Matrix kunt sturen.</p>
+<p>Hiervoor gebruik de volgende flow:</p>
+<p><img alt="nodered-webserver-testflow" src="_images/nodered-webserver-testflow.png" /></p>
+<p>Importeer deze flow <em>onder de nodes van de Matrix test-flow</em>:</p>
+<ul class="simple">
+<li><p>Kopieer (Copy) de JSON-tekst hieronder</p></li>
+<li><p>Importeer in NodeRed: Hamburgermenu-&gt;Import; Paste; positioneer onder de bestaande flow</p></li>
+<li><p>Deploy (rode knop rechtsboven)</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;8751025a.af47a8&quot;</span><span class="p">,</span><span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;http in&quot;</span><span class="p">,</span><span class="s2">&quot;z&quot;</span><span class="p">:</span><span class="s2">&quot;b715399a.8f6e38&quot;</span><span class="p">,</span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="s2">&quot;url&quot;</span><span class="p">:</span><span class="s2">&quot;/trello&quot;</span><span class="p">,</span><span class="s2">&quot;method&quot;</span><span class="p">:</span><span class="s2">&quot;get&quot;</span><span class="p">,</span><span class="s2">&quot;upload&quot;</span><span class="p">:</span><span class="n">false</span><span class="p">,</span><span class="s2">&quot;swaggerDoc&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="s2">&quot;x&quot;</span><span class="p">:</span><span class="mi">90</span><span class="p">,</span><span class="s2">&quot;y&quot;</span><span class="p">:</span><span class="mi">420</span><span class="p">,</span><span class="s2">&quot;wires&quot;</span><span class="p">:[[</span><span class="s2">&quot;91fb06ba.e73458&quot;</span><span class="p">]]},{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;2caf303.9b1ee5&quot;</span><span class="p">,</span><span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;http response&quot;</span><span class="p">,</span><span class="s2">&quot;z&quot;</span><span class="p">:</span><span class="s2">&quot;b715399a.8f6e38&quot;</span><span class="p">,</span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="s2">&quot;statusCode&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="s2">&quot;headers&quot;</span><span class="p">:{},</span><span class="s2">&quot;x&quot;</span><span class="p">:</span><span class="mi">410</span><span class="p">,</span><span class="s2">&quot;y&quot;</span><span class="p">:</span><span class="mi">420</span><span class="p">,</span><span class="s2">&quot;wires&quot;</span><span class="p">:[]},{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;af0c367e.43676&quot;</span><span class="p">,</span><span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;http in&quot;</span><span class="p">,</span><span class="s2">&quot;z&quot;</span><span class="p">:</span><span class="s2">&quot;b715399a.8f6e38&quot;</span><span class="p">,</span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="s2">&quot;url&quot;</span><span class="p">:</span><span class="s2">&quot;/trello&quot;</span><span class="p">,</span><span class="s2">&quot;method&quot;</span><span class="p">:</span><span class="s2">&quot;post&quot;</span><span class="p">,</span><span class="s2">&quot;upload&quot;</span><span class="p">:</span><span class="n">false</span><span class="p">,</span><span class="s2">&quot;swaggerDoc&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="s2">&quot;x&quot;</span><span class="p">:</span><span class="mi">100</span><span class="p">,</span><span class="s2">&quot;y&quot;</span><span class="p">:</span><span class="mi">320</span><span class="p">,</span><span class="s2">&quot;wires&quot;</span><span class="p">:[[</span><span class="s2">&quot;cdb30e1d.3cfd58&quot;</span><span class="p">,</span><span class="s2">&quot;91fb06ba.e73458&quot;</span><span class="p">,</span><span class="s2">&quot;58ae857.817917c&quot;</span><span class="p">]]},{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;cdb30e1d.3cfd58&quot;</span><span class="p">,</span><span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;template&quot;</span><span class="p">,</span><span class="s2">&quot;z&quot;</span><span class="p">:</span><span class="s2">&quot;b715399a.8f6e38&quot;</span><span class="p">,</span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="s2">&quot;field&quot;</span><span class="p">:</span><span class="s2">&quot;payload&quot;</span><span class="p">,</span><span class="s2">&quot;fieldType&quot;</span><span class="p">:</span><span class="s2">&quot;msg&quot;</span><span class="p">,</span><span class="s2">&quot;format&quot;</span><span class="p">:</span><span class="s2">&quot;handlebars&quot;</span><span class="p">,</span><span class="s2">&quot;syntax&quot;</span><span class="p">:</span><span class="s2">&quot;mustache&quot;</span><span class="p">,</span><span class="s2">&quot;template&quot;</span><span class="p">:</span><span class="s2">&quot;{</span><span class="se">\n</span><span class="s2">    </span><span class="se">\&quot;</span><span class="s2">body</span><span class="se">\&quot;</span><span class="s2">: </span><span class="se">\&quot;</span><span class="s2">Actie op bord {{payload.model.name}} - via FRED!</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\n</span><span class="s2">    </span><span class="se">\&quot;</span><span class="s2">msgtype</span><span class="se">\&quot;</span><span class="s2">: </span><span class="se">\&quot;</span><span class="s2">m.text</span><span class="se">\&quot;\n</span><span class="s2">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="s2">&quot;output&quot;</span><span class="p">:</span><span class="s2">&quot;json&quot;</span><span class="p">,</span><span class="s2">&quot;x&quot;</span><span class="p">:</span><span class="mi">420</span><span class="p">,</span><span class="s2">&quot;y&quot;</span><span class="p">:</span><span class="mi">320</span><span class="p">,</span><span class="s2">&quot;wires&quot;</span><span class="p">:[[</span><span class="s2">&quot;60087ea7.1600d&quot;</span><span class="p">]]},{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;91fb06ba.e73458&quot;</span><span class="p">,</span><span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;template&quot;</span><span class="p">,</span><span class="s2">&quot;z&quot;</span><span class="p">:</span><span class="s2">&quot;b715399a.8f6e38&quot;</span><span class="p">,</span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="s2">&quot;field&quot;</span><span class="p">:</span><span class="s2">&quot;payload&quot;</span><span class="p">,</span><span class="s2">&quot;fieldType&quot;</span><span class="p">:</span><span class="s2">&quot;msg&quot;</span><span class="p">,</span><span class="s2">&quot;format&quot;</span><span class="p">:</span><span class="s2">&quot;handlebars&quot;</span><span class="p">,</span><span class="s2">&quot;syntax&quot;</span><span class="p">:</span><span class="s2">&quot;mustache&quot;</span><span class="p">,</span><span class="s2">&quot;template&quot;</span><span class="p">:</span><span class="s2">&quot;OK.&quot;</span><span class="p">,</span><span class="s2">&quot;output&quot;</span><span class="p">:</span><span class="s2">&quot;str&quot;</span><span class="p">,</span><span class="s2">&quot;x&quot;</span><span class="p">:</span><span class="mi">260</span><span class="p">,</span><span class="s2">&quot;y&quot;</span><span class="p">:</span><span class="mi">420</span><span class="p">,</span><span class="s2">&quot;wires&quot;</span><span class="p">:[[</span><span class="s2">&quot;2caf303.9b1ee5&quot;</span><span class="p">,</span><span class="s2">&quot;8a3a8d7d.f18c4&quot;</span><span class="p">]]},{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;8a3a8d7d.f18c4&quot;</span><span class="p">,</span><span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;debug&quot;</span><span class="p">,</span><span class="s2">&quot;z&quot;</span><span class="p">:</span><span class="s2">&quot;b715399a.8f6e38&quot;</span><span class="p">,</span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="s2">&quot;active&quot;</span><span class="p">:</span><span class="n">true</span><span class="p">,</span><span class="s2">&quot;tosidebar&quot;</span><span class="p">:</span><span class="n">true</span><span class="p">,</span><span class="s2">&quot;console&quot;</span><span class="p">:</span><span class="n">false</span><span class="p">,</span><span class="s2">&quot;tostatus&quot;</span><span class="p">:</span><span class="n">false</span><span class="p">,</span><span class="s2">&quot;complete&quot;</span><span class="p">:</span><span class="s2">&quot;false&quot;</span><span class="p">,</span><span class="s2">&quot;x&quot;</span><span class="p">:</span><span class="mi">430</span><span class="p">,</span><span class="s2">&quot;y&quot;</span><span class="p">:</span><span class="mi">460</span><span class="p">,</span><span class="s2">&quot;wires&quot;</span><span class="p">:[]},{</span><span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;58ae857.817917c&quot;</span><span class="p">,</span><span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;debug&quot;</span><span class="p">,</span><span class="s2">&quot;z&quot;</span><span class="p">:</span><span class="s2">&quot;b715399a.8f6e38&quot;</span><span class="p">,</span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="s2">&quot;active&quot;</span><span class="p">:</span><span class="n">true</span><span class="p">,</span><span class="s2">&quot;tosidebar&quot;</span><span class="p">:</span><span class="n">true</span><span class="p">,</span><span class="s2">&quot;console&quot;</span><span class="p">:</span><span class="n">false</span><span class="p">,</span><span class="s2">&quot;tostatus&quot;</span><span class="p">:</span><span class="n">false</span><span class="p">,</span><span class="s2">&quot;complete&quot;</span><span class="p">:</span><span class="s2">&quot;false&quot;</span><span class="p">,</span><span class="s2">&quot;x&quot;</span><span class="p">:</span><span class="mi">430</span><span class="p">,</span><span class="s2">&quot;y&quot;</span><span class="p">:</span><span class="mi">360</span><span class="p">,</span><span class="s2">&quot;wires&quot;</span><span class="p">:[]}]</span>
+</pre></div>
+</div>
+<p>Je kunt nu de NodeRed-webserver testen vanuit Jupyter Notebook. Hiervoor heb je nodig:</p>
+<ul class="simple">
+<li><p>je FRED username</p></li>
+<li><p>je FRED password</p></li>
+</ul>
+<p>Let op: je moet je FRED username gebruiken, niet het email-adres waaronder je bij FRED bekend bent. Deze username staat onder je volledige naam linksboven, in de FRED-zijbalk.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">urllib</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="testen-van-de-webserver">
+<h3>Testen van de webserver<a class="headerlink" href="#testen-van-de-webserver" title="Permalink to this headline">¶</a></h3>
+<p>Met het volgende script kun je deze webserver testen. Je hebt in de URL je FRED username/password nodig.
+Je hebt hier een username/password nodig omdat de API van NodeRed in de gratis versie niet publiekelijk toegankelijk is.</p>
+<p>Omdat in een password allerlei bijzondere tekens kunnen voorkomen, zoals “&#64;” of “&amp;”, gebruiken we daarvoor de url-encoding. Daarbij worden deze bijzondere tekens omgezet in “%40” of “%26”, enz. (Je ziet dat mogelijk weleens in een URL.)</p>
+<p>Het GET-request wordt straks door Trello gebruikt om te controleren of de URL werkt.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fred_username</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;FRED username? &quot;</span><span class="p">)</span>
+<span class="n">fred_password</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;FRED password? &quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://</span><span class="si">{user}</span><span class="s2">:</span><span class="si">{passwd}</span><span class="s2">@</span><span class="si">{user}</span><span class="s2">.fred.sensetecnic.com/api/trello&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+        <span class="n">user</span> <span class="o">=</span> <span class="n">fred_username</span><span class="p">,</span>
+        <span class="n">passwd</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">quote</span><span class="p">(</span><span class="n">fred_password</span><span class="p">)</span>
+    <span class="p">))</span>
+<span class="n">r</span><span class="o">.</span><span class="n">status_code</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Controleer in het NodeRed debug-venster of dit request aangekomen is.</p>
+</div>
+<div class="section" id="test-post-url">
+<h3>Test: POST-URL<a class="headerlink" href="#test-post-url" title="Permalink to this headline">¶</a></h3>
+<p>De volgende stap is het testen van de POST-URL die straks door Trello gebruikt gaat worden.
+We hebben dan ook een JSON-payload nodig met de informatie die straks in het Matrix-bericht moet komen,
+in dit geval de naam van het Trello-bord.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model_data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Jupyter Notebook test&quot;</span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;https://</span><span class="si">{user}</span><span class="s2">:</span><span class="si">{passwd}</span><span class="s2">@</span><span class="si">{user}</span><span class="s2">.fred.sensetecnic.com/api/trello&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="n">user</span> <span class="o">=</span> <span class="n">fred_username</span><span class="p">,</span>
+            <span class="n">passwd</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">quote</span><span class="p">(</span><span class="n">fred_password</span><span class="p">)</span>
+          <span class="p">),</span>
+          <span class="n">json</span> <span class="o">=</span> <span class="n">model_data</span>
+      <span class="p">)</span>
+<span class="n">res</span><span class="o">.</span><span class="n">status_code</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Controleer in het NodeRed debug-venster of dit request met de payload aangekomen is.</p>
+</div>
+<div class="section" id="webserver-flow-koppelen-aan-matrix-flow">
+<h3>Webserver-flow koppelen aan Matrix-flow<a class="headerlink" href="#webserver-flow-koppelen-aan-matrix-flow" title="Permalink to this headline">¶</a></h3>
+<p>De volgende stap is het koppelen van deze webserver aan de flow voor het versturen van een Matrix bericht.</p>
+<ul class="simple">
+<li><p>maak een verbinding van de uitvoer van het POST-template</p></li>
+<li><p>naar de invoer van “Prepare Matrix Message”</p></li>
+<li><p>en Deploy!</p></li>
+</ul>
+<p>Je flow ziet er nu als volgt uit:</p>
+<p><img alt="nodered-webserver-matrixflow" src="_images/nodered-webserver-matrix-flow.png" /></p>
+</div>
+<div class="section" id="test-de-gecombineerd-webserver-matrix-flow">
+<h3>Test de gecombineerd webserver-Matrix flow<a class="headerlink" href="#test-de-gecombineerd-webserver-matrix-flow" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>voer nu het vorige script (Test: POST-URL) nogmaals uit.</p></li>
+</ul>
+<p>Als het goed is krijg je nu een bericht in Matrix</p>
+</div>
+</div>
+<div class="section" id="stap-3-trello-webhook">
+<h2>Stap 3: Trello webhook<a class="headerlink" href="#stap-3-trello-webhook" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="aanmaken-van-een-trello-token">
+<h3>Aanmaken van een Trello-token<a class="headerlink" href="#aanmaken-van-een-trello-token" title="Permalink to this headline">¶</a></h3>
+<p>Voor het aanmaken van de Trello webhook heb je een trello-token nodig, zie de eerdere hoofdstukken.</p>
+<ul class="simple">
+<li><p>vul hieronder je Trello API-key in (zie <a class="reference external" href="https://trello.com/app-key">https://trello.com/app-key</a>)</p></li>
+<li><p>maak hiermee de URL aan voor het aanvragen van een token</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">api_key</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;API-key? &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ingevulde api_key: &quot;</span> <span class="o">+</span> <span class="n">api_key</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>maak hiermee de URL aan voor het aanvragen van een token</p></li>
+<li><p>klik op die resultaat-URL om het token de kopiëren (Copy)</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://trello.com/1/authorize?expiration=1day&amp;name=MyWebhookToken&amp;scope=read,write&amp;response_type=token&amp;key=&quot;</span> <span class="o">+</span> <span class="n">api_key</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>vul het token in (Paste)</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trello_token</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Trello-token? &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ingevuld token: &quot;</span><span class="p">,</span> <span class="n">trello_token</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="bord-id">
+<h3>Bord-id<a class="headerlink" href="#bord-id" title="Permalink to this headline">¶</a></h3>
+<p>De webhook koppel je straks aan een Trello-bord. Daarvoor heb je de ID nodig van dat bord.</p>
+<p>Via de opdrachten uit het Trello-hoofdstuk kun je een nieuw bord aanmaken,
+daarbij krijg je ook de ID van dat bord.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">board_id</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Trello bord-ID? &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ingevuld bord-ID: &quot;</span><span class="p">,</span> <span class="n">board_id</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="webhook-url">
+<h3>webhook-URL<a class="headerlink" href="#webhook-url" title="Permalink to this headline">¶</a></h3>
+<p>De URL voor de NodeRed-server gebruik je als webhook voor Trello.
+Deze geef je straks door in de het webhook API-request</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">webhook_url</span> <span class="o">=</span> <span class="s2">&quot;https://</span><span class="si">{user}</span><span class="s2">:</span><span class="si">{passwd}</span><span class="s2">@</span><span class="si">{user}</span><span class="s2">.fred.sensetecnic.com/api/trello&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                 <span class="n">user</span> <span class="o">=</span> <span class="n">fred_username</span><span class="p">,</span>
+                 <span class="n">passwd</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">quote</span><span class="p">(</span><span class="n">fred_password</span><span class="p">)</span>
+              <span class="p">)</span>
+<span class="n">webhook_url</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>De gegevens voor een webhook bestaan, naast de URL, uit een beschrijving en een <em>model</em>.
+Dit model is het Trello-onderdeel waarvoor je een webhook-bericht wilt hebben.
+In ons geval is dat een Trello-bord.</p>
+<p>Deze gegevens voor Trello moeten in het volgende formaat aangeboden worden:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;My first webhook&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;callbackURL&quot;</span><span class="p">:</span> <span class="n">webhook_url</span><span class="p">,</span>
+    <span class="s2">&quot;idModel&quot;</span><span class="p">:</span> <span class="n">board_id</span> 
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>De eigenlijke API-call naar Trello, voor het koppelen van de webhook:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+   <span class="s2">&quot;https://api.trello.com/1/tokens/</span><span class="si">{api_token}</span><span class="s2">/webhooks?key=</span><span class="si">{api_key}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+       <span class="n">api_token</span> <span class="o">=</span> <span class="n">trello_token</span><span class="p">,</span>
+       <span class="n">api_key</span> <span class="o">=</span> <span class="n">api_key</span>
+   <span class="p">),</span>
+   <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Accept&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">},</span>
+   <span class="n">data</span><span class="o">=</span><span class="n">data</span>
+<span class="p">)</span>
+<span class="n">response</span><span class="o">.</span><span class="n">status_code</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Opmerking</em>: zie de Trello-documentatie voor de levensduur van deze webhook:
+<a class="reference external" href="https://developer.atlassian.com/cloud/trello/guides/rest-api/webhooks/">https://developer.atlassian.com/cloud/trello/guides/rest-api/webhooks/</a>.</p>
+</div>
+</div>
+<div class="section" id="de-ultieme-test">
+<h2>De ultieme test<a class="headerlink" href="#de-ultieme-test" title="Permalink to this headline">¶</a></h2>
+<p>Na deze koppeling moet een actie op het Trello-bord resulteren in een request naar de webhook.
+Dit moet dan weer een message in Matrix geven.
+Controleer dit door op het Trello-bord een actie uit te voeren,
+bijvoorbeeld het aanmaken of verplaatsen van een card.</p>
+<p>In NodeRed kun je dan de gegevens zien die Trello opstuurt via de webhook.</p>
+<hr class="docutils" />
+<p>Bord-id (voorbeeld): 5fd0a63b80e957561238d3d1</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="matrix.html" title="previous page">Matrix instant messaging</a>
+    <a class='right-next' id="next-link" href="tools.html" title="next page">Tools en links</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Eelco Dijkstra<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

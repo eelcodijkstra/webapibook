@@ -1,5 +1,15 @@
 # Matrix instant messaging
 
+Matrix (https://matrix.org)
+
+* instant messaging (vgl. IRC, Slacj, WhatsApp, ...)
+* open: open source, zelf hosten van server
+* federatie van Matrix-servers
+* bridges naar andere IM-diensten
+* App: https://element.io
+
+# Matrix instant messaging
+
 Matrix (https://matrix.org) is een *instant messaging* toepassing, te vergelijken met IRC, Slack, Telegram, WhatsApp en dergelijke.
 Matrix onderscheidt zich van de andere berichtendiensten door het open karakter.
 Niet alleen is de software open source, de toepassing is helemaal gericht op het onderling verknopen (federation) van berichtentdiensten. Je kunt met je eigen Matrix-server (Selenium) werken, als je dat wilt, en deze in het Matrix-netwerk op laten nemen.
@@ -19,6 +29,16 @@ Let op, je krijgt de bevestigingsmail van matrix.org; soms belandt deze in je sp
 Stuur als het gelukt is even een bericht naar `@eelcod:matrix.org`.
 ```
 
+## Termen
+
+* (chat)room: het gesprek - bijv. `#infvo-test:matrix.org`
+* user - bijv. `@infvobot:matrix.org`
+* community - bijv. `+infvo:matrix.org`
+
+*room* heeft een verzameling *users*; vaak alleen op uitnodiging.
+
+room_id: gebruikt in API in plaats van naam
+
 ## Matrix terminologie
 
 * *room*: de plek waar berichten over een bepaald onderwerp uitgewisseld worden; je kunt dit ook zien als een gesprek. Een room heeft een naam, bijvoorbeeld:  `#infvo-test:matrix.org`
@@ -33,6 +53,16 @@ In de API's worden in plaats van de normale namen vaak IDs gebruikt. Deze kun je
 
 ## Matrix API
 
+Zie:  https://matrix.org/docs/api/client-server/
+
+* POST /_matrix/client/r0/login
+* PUT  /_matrix/client/r0/rooms/{id}/send/m.room.message/{nd}
+* GET  /_matrix/client/r0/sync
+* GET  /_matrix/client/r0/rooms/{roomID}/messages
+
+
+## Matrix API
+
 De Matrix client-server API vind je op https://matrix.org/docs/api/client-server/.
 Bij de uitleg vind je daar ook de mogelijkheid om queries uit te proberen.
 
@@ -41,7 +71,7 @@ Voor ons zijn de belangrijkste functies:
 * POST https://matrix.org/_matrix/client/r0/login: dit geeft als resultaat een *access token* dat je in de volgende API-aanroepen gebruikt voor authenticatie.
 * PUT https://matrix.org/_matrix/client/r0/rooms/{roomID}/send/m.room.message/{txnr}: verstuur een bericht met volgnr *txnr* naar de genoemde *room*.
 * GET https://matrix.org/_matrix/client/r0/sync: synchroniseer de ontvanger met de toestand van de verbonden *rooms*. 
-* GET https://matrix.org/_matrix/client/r0/rooms/{roomID}/messages: de berichten sinds 
+* GET https://matrix.org/_matrix/client/r0/rooms/{roomID}/messages: de berichten sinds de vorige opvraging
 
 
 ## Login en token
@@ -53,17 +83,23 @@ Dit kun je krijgen door een login-request, waarbij je username en password nodig
   nadat een gebruiker ingelogd heeft. Dit cookie wordt dan met alle volgende requests vanuit de browser
   naar de server gestuurd. Dit fungeert dan als authenticatie van deze volgende requests. 
 
+## Login voor API-token
+
 import requests
 import json
 import urllib
 
 Om te voorkomen dat de username/password-combinatie in de code van het Jupyter Notebook opgenomen wordt, moet je deze invoeren bij het uitvoeren van de onderstaande cel. Voer de cel uit (Shift-Enter); voer dan de *username* in gevolgd door Return; en dan het *password* gevolgd door Return. Navigeer met de pijl naar beneden naar de volgende cel.
 
+### Username en password
+
 matrix_username = input("Matrix username: ")
 matrix_password = input("Matrix password: ")
 msgnr = 1
 
 Volgens de API-beschrijving moet je onderstaande gegevens als data meesturen bij het login-request.
+
+### Login-data
 
 request_data = {
   "identifier": {
@@ -75,7 +111,7 @@ request_data = {
   "type": "m.login.password"
 }
 
-Voor de login gebruik je een POST-request met de bovenstaande data:
+### Login: POST request
 
 r = requests.post('https://matrix.org/_matrix/client/r0/login', json=request_data)
 
@@ -100,6 +136,8 @@ waarna de gebruiker deel kan nemen in de room (*join*).
 We gaan er hieronder vanuit dat de betreffende gebruiker toegang heeft tot de room.
 In Element vind je de room_id via de (...)room-options->instellingen->geavanceerd.
 
+## Rooom_id
+
 room_id = input("Room ID? ")
 print("Ingevulde room_id: ", room_id)
 
@@ -110,6 +148,10 @@ Berichten worden genummerd om ervoor te zorgen dat eenzelfde bericht maar één 
 ook als dit meermalen verstuurd wordt (*idempotent* gedrag). 
 Berichten met een lager nummer dan het laatst ontvangen nummer worden niet geplaatst.
 
+## Sturen van een bericht
+
+Het bericht (tekst) met volgnr. en de URL:
+
 msgnr = msgnr + 1
 msg1 = {
   "msgtype": "m.text",
@@ -119,6 +161,8 @@ url1 = "https://matrix.org/_matrix/client/r0/rooms/{roomid}/send/m.room.message/
           roomid = room_id, txnr = str(msgnr), token = access_token
        )
 url1
+
+### Send: PUT-request
 
 snd = requests.put(url1, json=msg1)
 if snd.status_code == 200:

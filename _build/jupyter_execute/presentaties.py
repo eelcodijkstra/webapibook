@@ -11,6 +11,7 @@ In dit Jupyter Notebook vind je de interactieve presentaties via onderstaande li
 
 * [Inleiding web API's](presentaties/http-in-python.ipynb)
 * [Voorbeeld: Trello](presentaties/http-rest.ipynb)
+* [Voorbeeld: Matrix](presentaties/matrix-presentatie.ipynb)
 
 Je kunt deze in presentatie-modus starten met het "histogram-symbool" bovenin.
 
@@ -29,6 +30,7 @@ In het venster krijg je dan de verschillende bestanden in het repository te zien
 :titlesonly:
 
 
-presentaties/http-in-python.ipynb
-presentaties/http-rest.ipynb
+presentaties/http-in-python
+presentaties/http-rest
+presentaties/matrix-presentatie
 ```
