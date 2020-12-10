@@ -173,6 +173,9 @@ else:
 
 ## Ontvangen van berichten
 
+1. sync - geeft toestand (incl. history) van alle rooms
+2. get messages - herhalen voor nieuwe berichten
+
 Het ontvangen van berichten is nogal wat ingewikkelder dan het versturen van een bericht.
 In principe kan er in de *timeline* van de *room* al een flinke lijst van berichten zijn die op dit moment nog niet ontvangen zijn. En tussen twee verzoeken om nieuwe berichten kunnen er meerdere berichten ontvangen zijn.
 
@@ -206,14 +209,16 @@ Voor elke room is er een timeline met events.
 Er zijn events voor het aanmaken van een room, voor het uitnodigen/join van gebruikers, enz.
 Wij zijn hier alleen geïnteresseerd in de tekstberichten van type: "m.room.message".
 
+## Berichten in de historie
+
 events = result["rooms"]["join"][room_id]["timeline"]["events"]
 for event in events:
     if event["type"] == "m.room.message":
         print(event["sender"], ": ", event["content"]["body"])
 
+## Opvragen van nieuwe berichten
 
-
-Voor het opvragen van de berichten na deze synchonisatie gebruiken we de "messages" url.
+"messages" URL; bijwerken `prev_batch`
 
 url3 = "https://matrix.org/_matrix/client/r0/rooms/{roomid}/messages?access_token={token}&from={prev}".format(
           roomid = room_id,
@@ -230,13 +235,16 @@ result3
 prev_batch = result3["end"]
 prev_batch
 
+### De nieuwe berichten
+
 events = result3["chunk"]
 for event in events:
     if event["type"] == "m.room.message":
         print(event["sender"], ": ", event["content"]["body"])
 
-Voor het ophalen van de nieuwste berichten definiëren we de functie `get_messages(last_msg)`.
-Deze haalt de berichten na last_msg op, en levert als resultaat het tupel: `(messages, last_msg)`
+## Functie get_messages(last_msg)
+
+resultaat: `(messages, last_msg)`
 
 def get_messages(last_msg):
     global room_id, access_token
@@ -252,7 +260,9 @@ def get_messages(last_msg):
     last_msg = result["end"]
     return (result["chunk"], last_msg)    
 
-De volgende cel kun je herhaald uitvoeren om steeds de laatste berichten te ontvangen:
+## Ophalen nieuwe berichten
+
+Voor de volgende cel herhaald uit
 
 (mesgs, prev_batch) = get_messages(prev_batch)
 if mesgs == []:

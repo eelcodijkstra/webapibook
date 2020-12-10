@@ -313,6 +313,11 @@
     <a class="reference internal nav-link" href="#login-en-token">
      Login en token
     </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#login-voor-api-token">
+     Login voor API-token
+    </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h3 nav-item toc-entry">
       <a class="reference internal nav-link" href="#username-en-password">
@@ -361,6 +366,33 @@
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#ontvangen-van-berichten">
      Ontvangen van berichten
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#berichten-in-de-historie">
+     Berichten in de historie
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#opvragen-van-nieuwe-berichten">
+     Opvragen van nieuwe berichten
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#de-nieuwe-berichten">
+       De nieuwe berichten
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#functie-get-messages-last-msg">
+     Functie get_messages(last_msg)
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ophalen-nieuwe-berichten">
+     Ophalen nieuwe berichten
     </a>
    </li>
   </ul>
@@ -459,13 +491,9 @@ Dit kun je krijgen door een login-request, waarbij je username en password nodig
 nadat een gebruiker ingelogd heeft. Dit cookie wordt dan met alle volgende requests vanuit de browser
 naar de server gestuurd. Dit fungeert dan als authenticatie van deze volgende requests.</p>
 </div></blockquote>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Login voor API-token</span>
-</pre></div>
 </div>
-</div>
-</div>
+<div class="section" id="login-voor-api-token">
+<h2>Login voor API-token<a class="headerlink" href="#login-voor-api-token" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
@@ -601,6 +629,10 @@ Berichten met een lager nummer dan het laatst ontvangen nummer worden niet gepla
 </div>
 <div class="section" id="ontvangen-van-berichten">
 <h2>Ontvangen van berichten<a class="headerlink" href="#ontvangen-van-berichten" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>sync - geeft toestand (incl. history) van alle rooms</p></li>
+<li><p>get messages - herhalen voor nieuwe berichten</p></li>
+</ol>
 <p>Het ontvangen van berichten is nogal wat ingewikkelder dan het versturen van een bericht.
 In principe kan er in de <em>timeline</em> van de <em>room</em> al een flinke lijst van berichten zijn die op dit moment nog niet ontvangen zijn. En tussen twee verzoeken om nieuwe berichten kunnen er meerdere berichten ontvangen zijn.</p>
 <blockquote>
@@ -647,6 +679,9 @@ Daarbij geef je steeds de <em>eventid</em> mee van het laatst ontvangen bericht 
 <p>Voor elke room is er een timeline met events.
 Er zijn events voor het aanmaken van een room, voor het uitnodigen/join van gebruikers, enz.
 Wij zijn hier alleen geïnteresseerd in de tekstberichten van type: “m.room.message”.</p>
+</div>
+<div class="section" id="berichten-in-de-historie">
+<h2>Berichten in de historie<a class="headerlink" href="#berichten-in-de-historie" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">events</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;rooms&quot;</span><span class="p">][</span><span class="s2">&quot;join&quot;</span><span class="p">][</span><span class="n">room_id</span><span class="p">][</span><span class="s2">&quot;timeline&quot;</span><span class="p">][</span><span class="s2">&quot;events&quot;</span><span class="p">]</span>
@@ -657,7 +692,10 @@ Wij zijn hier alleen geïnteresseerd in de tekstberichten van type: “m.room.me
 </div>
 </div>
 </div>
-<p>Voor het opvragen van de berichten na deze synchonisatie gebruiken we de “messages” url.</p>
+</div>
+<div class="section" id="opvragen-van-nieuwe-berichten">
+<h2>Opvragen van nieuwe berichten<a class="headerlink" href="#opvragen-van-nieuwe-berichten" title="Permalink to this headline">¶</a></h2>
+<p>“messages” URL; bijwerken <code class="docutils literal notranslate"><span class="pre">prev_batch</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url3</span> <span class="o">=</span> <span class="s2">&quot;https://matrix.org/_matrix/client/r0/rooms/</span><span class="si">{roomid}</span><span class="s2">/messages?access_token=</span><span class="si">{token}</span><span class="s2">&amp;from=</span><span class="si">{prev}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
@@ -688,6 +726,8 @@ Wij zijn hier alleen geïnteresseerd in de tekstberichten van type: “m.room.me
 </div>
 </div>
 </div>
+<div class="section" id="de-nieuwe-berichten">
+<h3>De nieuwe berichten<a class="headerlink" href="#de-nieuwe-berichten" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">events</span> <span class="o">=</span> <span class="n">result3</span><span class="p">[</span><span class="s2">&quot;chunk&quot;</span><span class="p">]</span>
@@ -698,8 +738,11 @@ Wij zijn hier alleen geïnteresseerd in de tekstberichten van type: “m.room.me
 </div>
 </div>
 </div>
-<p>Voor het ophalen van de nieuwste berichten definiëren we de functie <code class="docutils literal notranslate"><span class="pre">get_messages(last_msg)</span></code>.
-Deze haalt de berichten na last_msg op, en levert als resultaat het tupel: <code class="docutils literal notranslate"><span class="pre">(messages,</span> <span class="pre">last_msg)</span></code></p>
+</div>
+</div>
+<div class="section" id="functie-get-messages-last-msg">
+<h2>Functie get_messages(last_msg)<a class="headerlink" href="#functie-get-messages-last-msg" title="Permalink to this headline">¶</a></h2>
+<p>resultaat: <code class="docutils literal notranslate"><span class="pre">(messages,</span> <span class="pre">last_msg)</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_messages</span><span class="p">(</span><span class="n">last_msg</span><span class="p">):</span>
@@ -719,7 +762,10 @@ Deze haalt de berichten na last_msg op, en levert als resultaat het tupel: <code
 </div>
 </div>
 </div>
-<p>De volgende cel kun je herhaald uitvoeren om steeds de laatste berichten te ontvangen:</p>
+</div>
+<div class="section" id="ophalen-nieuwe-berichten">
+<h2>Ophalen nieuwe berichten<a class="headerlink" href="#ophalen-nieuwe-berichten" title="Permalink to this headline">¶</a></h2>
+<p>Voor de volgende cel herhaald uit</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">mesgs</span><span class="p">,</span> <span class="n">prev_batch</span><span class="p">)</span> <span class="o">=</span> <span class="n">get_messages</span><span class="p">(</span><span class="n">prev_batch</span><span class="p">)</span>
