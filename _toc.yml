@@ -14,6 +14,7 @@
   - file: presentaties/http-in-python
   - file: presentaties/http-rest
   - file: presentaties/matrix-presentatie
+  - file: presentaties/trello-webhook-presentatie
 - file: Inleiding-Jupyter.ipynb
 - file: binder
 
